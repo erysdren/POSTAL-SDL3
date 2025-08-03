@@ -10,8 +10,15 @@ else()
 	find_package(SDL3 CONFIG COMPONENTS SDL3-shared)
 endif()
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+	add_compile_definitions(DEBUG _DEBUG)
+else()
+	add_compile_definitions(NDEBUG _NDEBUG)
+endif()
+
 include_directories(${PROJECT_SOURCE_DIR})
-add_compile_options(-fsigned-char -DPLATFORM_UNIX -Wno-write-strings)
+add_compile_options(-fsigned-char -Wno-write-strings)
+add_compile_definitions(ALLOW_TWINSTICK PLATFORM_UNIX)
 
 add_library(RSPiX STATIC
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/BLUE/unix/Bdebug.cpp
