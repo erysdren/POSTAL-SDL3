@@ -37,7 +37,7 @@ class CSettings
 	private:
 		typedef RFList<CSettings*> SETTINGS;
 
-		typedef enum
+		enum
 			{
 			MemFileSize = 512
 			};
