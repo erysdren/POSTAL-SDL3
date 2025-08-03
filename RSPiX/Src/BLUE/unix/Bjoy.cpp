@@ -65,7 +65,7 @@ typedef struct
 
 static JoyState		ms_ajsCurr[NUM_JOYSTICKS];		// Current joystick state.
 static JoyState		ms_ajsPrev[NUM_JOYSTICKS];		// Previous joystick state.
-static SDL_GameController *ms_Controllers[NUM_JOYSTICKS];
+static SDL_Gamepad *ms_Controllers[NUM_JOYSTICKS];
 
 //////////////////////////////////////////////////////////////////////////////
 // Internal functions.
@@ -85,20 +85,22 @@ static SDL_GameController *ms_Controllers[NUM_JOYSTICKS];
 //////////////////////////////////////////////////////////////////////////////
 extern void Joy_Init(void)
 	{
-        if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) == -1)
+        if (!SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD))
             return;
-        SDL_JoystickEventState(SDL_IGNORE);
-        SDL_GameControllerEventState(SDL_IGNORE);
+        SDL_SetJoystickEventsEnabled(false);
+        SDL_SetGamepadEventsEnabled(false);
 
-        const int sticks = SDL_NumJoysticks();
+        int sticks = 0;
+        SDL_JoystickID *ignored = SDL_GetJoysticks(&sticks);
+        SDL_free(ignored);
         int opened = 0;
         int seen = 0;
         for (int i = 0; i < sticks; i++)
         {
-            if (!SDL_IsGameController(i))
+            if (!SDL_IsGamepad(i))
                 continue;
             seen++;
-            SDL_GameController *controller = SDL_GameControllerOpen(i);
+            SDL_Gamepad *controller = SDL_OpenGamepad(i);
             if (!controller)
                 continue;
             ms_Controllers[opened++] = controller;
@@ -114,33 +116,33 @@ extern void Joy_Init(void)
 	}
 
 
-static void calcAxis(SDL_GameController *controller, const SDL_GameControllerAxis axis, U32 *bits, const U32 posbit, const U32 negbit)
+static void calcAxis(SDL_Gamepad *controller, const SDL_GamepadAxis axis, U32 *bits, const U32 posbit, const U32 negbit)
 {
     const Sint16 deadzone = (Sint16) (32767.0f * (MID_THRESHOLD_PERCENT / 100.0f));
-    const Sint16 val = SDL_GameControllerGetAxis(controller, axis);
+    const Sint16 val = SDL_GetGamepadAxis(controller, axis);
     if ((val < 0) && ((-val) > deadzone))
         *bits |= negbit;
     else if ((val > 0) && (val > deadzone))
         *bits |= posbit;
 }
 
-static inline void calcButton(SDL_GameController *controller, const SDL_GameControllerButton button, U32 *bits, const U32 posbit)
+static inline void calcButton(SDL_Gamepad *controller, const SDL_GamepadButton button, U32 *bits, const U32 posbit)
 {
-    if (SDL_GameControllerGetButton(controller, button) != 0)
+    if (SDL_GetGamepadButton(controller, button) != 0)
         *bits |= posbit;
 }
 
-static void GetAxesNew(SDL_GameController* controller, Sint16* out_axis_MoveUpDown, Sint16* out_axis_MoveLeftRight, Sint16* out_axis_FireUpDown, Sint16* out_axis_FireLeftRight)
+static void GetAxesNew(SDL_Gamepad* controller, Sint16* out_axis_MoveUpDown, Sint16* out_axis_MoveLeftRight, Sint16* out_axis_FireUpDown, Sint16* out_axis_FireLeftRight)
 {
 	// deadzone shit
 #define DEADZONE_PERCENT 25.f
 	const Sint16 deadzone = (Sint16)(32767.0f * (DEADZONE_PERCENT / 100.0f));
 
 	// Grab axes
-	Sint16 axis_MoveUpDown = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
-	Sint16 axis_MoveLeftRight = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
-	Sint16 axis_FireUpDown = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_RIGHTY);
-	Sint16 axis_FireLeftRight = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_RIGHTX);
+	Sint16 axis_MoveUpDown = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_LEFTY);
+	Sint16 axis_MoveLeftRight = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_LEFTX);
+	Sint16 axis_FireUpDown = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_RIGHTY);
+	Sint16 axis_FireLeftRight = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_RIGHTX);
 
 	// Clamp to sane values
 	if (axis_MoveUpDown < deadzone && axis_MoveUpDown > -deadzone && axis_MoveLeftRight < deadzone && axis_MoveLeftRight > -deadzone)
@@ -188,7 +190,7 @@ static inline double GetStickAngle(Sint32 axis_X, Sint32 axis_Y)
 #if defined(ALLOW_TWINSTICK)
 extern void GetDudeVelocity(double* d_Velocity, double* d_Angle)
 {
-	SDL_GameController* controller = ms_Controllers[0];
+	SDL_Gamepad* controller = ms_Controllers[0];
 
 	Sint16 axis_MoveUpDown = ms_ajsCurr[0].axis_MoveUpDown;
 	Sint16 axis_MoveLeftRight = ms_ajsCurr[0].axis_MoveLeftRight;
@@ -207,7 +209,7 @@ extern void GetDudeVelocity(double* d_Velocity, double* d_Angle)
 //////////////////////////////////////////////////////////////////////////////
 extern bool GetDudeFireAngle(double* d_Angle)
 {
-	SDL_GameController* controller = ms_Controllers[0];
+	SDL_Gamepad* controller = ms_Controllers[0];
 
 	Sint16 axis_FireUpDown = ms_ajsCurr[0].axis_FireUpDown;
 	Sint16 axis_FireLeftRight = ms_ajsCurr[0].axis_FireLeftRight;
@@ -238,13 +240,13 @@ extern void rspUpdateJoy(int16_t sJoy)
         if ((sJoy > NUM_JOYSTICKS) || (ms_Controllers[sJoy] == NULL))
             return;
 
-        SDL_GameController *controller = ms_Controllers[sJoy];
-        SDL_GameControllerUpdate();
+        SDL_Gamepad *controller = ms_Controllers[sJoy];
+        SDL_UpdateGamepads();
 
-        if (!SDL_GameControllerGetAttached(controller))
+        if (!SDL_GamepadConnected(controller))
         {
             // uhoh, controller was unplugged.
-            SDL_GameControllerClose(controller);
+            SDL_CloseGamepad(controller);
             ms_Controllers[sJoy] = NULL;
             SDL_memset(&ms_ajsCurr[sJoy], '\0', sizeof (JoyState));
             SDL_memset(&ms_ajsPrev[sJoy], '\0', sizeof (JoyState));
@@ -259,34 +261,34 @@ extern void rspUpdateJoy(int16_t sJoy)
 		GetAxesNew(controller, &ms_ajsCurr[sJoy].axis_MoveUpDown, &ms_ajsCurr[sJoy].axis_MoveLeftRight, &ms_ajsCurr[sJoy].axis_FireUpDown, &ms_ajsCurr[sJoy].axis_FireLeftRight);
 //#else
 #endif
-        calcAxis(controller, SDL_CONTROLLER_AXIS_LEFTX, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_X_POS, RSP_JOY_X_NEG);
-        calcAxis(controller, SDL_CONTROLLER_AXIS_LEFTY, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_Y_POS, RSP_JOY_Y_NEG);
-        calcAxis(controller, SDL_CONTROLLER_AXIS_RIGHTX, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_Z_POS, RSP_JOY_Z_NEG);
-        calcAxis(controller, SDL_CONTROLLER_AXIS_RIGHTY, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_W_POS, RSP_JOY_W_NEG);
-        //calcAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERLEFT, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_U_POS, RSP_JOY_U_NEG);
-        //calcAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERRIGHT, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_V_POS, RSP_JOY_V_NEG);
+        calcAxis(controller, SDL_GAMEPAD_AXIS_LEFTX, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_X_POS, RSP_JOY_X_NEG);
+        calcAxis(controller, SDL_GAMEPAD_AXIS_LEFTY, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_Y_POS, RSP_JOY_Y_NEG);
+        calcAxis(controller, SDL_GAMEPAD_AXIS_RIGHTX, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_Z_POS, RSP_JOY_Z_NEG);
+        calcAxis(controller, SDL_GAMEPAD_AXIS_RIGHTY, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_W_POS, RSP_JOY_W_NEG);
+        //calcAxis(controller, SDL_GAMEPAD_AXIS_LEFT_TRIGGER, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_U_POS, RSP_JOY_U_NEG);
+        //calcAxis(controller, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER, &ms_ajsCurr[sJoy].u32Axes, RSP_JOY_V_POS, RSP_JOY_V_NEG);
 //#endif
 
         ms_ajsCurr[sJoy].u32Buttons = 0;
-        calcButton(controller, SDL_CONTROLLER_BUTTON_A, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_1);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_B, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_2);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_X, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_3);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_Y, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_4);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_BACK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_5);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_GUIDE, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_6);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_START, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_7);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_LEFTSTICK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_8);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSTICK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_9);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_10);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_11);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_12);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_13);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_14);
-        calcButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_15);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_SOUTH, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_1);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_EAST, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_2);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_WEST, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_3);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_NORTH, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_4);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_BACK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_5);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_GUIDE, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_6);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_START, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_7);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_LEFT_STICK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_8);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_RIGHT_STICK, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_9);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_LEFT_SHOULDER, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_10);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_11);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_DPAD_UP, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_12);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_DPAD_DOWN, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_13);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_DPAD_LEFT, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_14);
+        calcButton(controller, SDL_GAMEPAD_BUTTON_DPAD_RIGHT, &ms_ajsCurr[sJoy].u32Buttons, RSP_JOY_BUT_15);
 
 		//!! HACK
-		Sint16 TriggerLeft = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERLEFT);
-		Sint16 TriggerRight = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
+		Sint16 TriggerLeft = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_LEFT_TRIGGER);
+		Sint16 TriggerRight = SDL_GetGamepadAxis(controller, SDL_GAMEPAD_AXIS_RIGHT_TRIGGER);
 		if (TriggerLeft > 16384)
 			ms_ajsCurr[sJoy].u32Buttons |= RSP_JOY_BUT_16;
 		if (TriggerRight > 16384)

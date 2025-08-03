@@ -137,14 +137,14 @@ extern void rspDoSystem(void)										// Returns nothing.
             {
                 //case SDL_MOUSEMOTION:
                 //case SDL_JOYBALLMOTION:
-                case SDL_MOUSEBUTTONDOWN:
-                case SDL_MOUSEBUTTONUP:
-				case SDL_MOUSEWHEEL:
+                case SDL_EVENT_MOUSE_BUTTON_DOWN:
+                case SDL_EVENT_MOUSE_BUTTON_UP:
+				case SDL_EVENT_MOUSE_WHEEL:
                     Mouse_Event(&event);
                     break;
 
-                case SDL_KEYDOWN:
-                case SDL_KEYUP:
+                case SDL_EVENT_KEY_DOWN:
+                case SDL_EVENT_KEY_UP:
                     Key_Event(&event);
                     break;
 
@@ -153,7 +153,7 @@ extern void rspDoSystem(void)										// Returns nothing.
 //                        GSDLAppIsActive = (event.active.gain != 0);
 //                    break;
 
-                case SDL_QUIT:
+                case SDL_EVENT_QUIT:
                     rspSetQuitStatus(1);
                     break;
             }

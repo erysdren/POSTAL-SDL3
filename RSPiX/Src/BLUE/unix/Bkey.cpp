@@ -72,15 +72,15 @@ extern void rspSetQuitStatus(int16_t sQuitStatus);
 
 extern void Key_Event(SDL_Event *event)
 {
-    ASSERT((event->type == SDL_KEYUP) || (event->type == SDL_KEYDOWN));
-    //ASSERT(event->key.keysym.sym < SDLK_LAST);
+    ASSERT((event->type == SDL_EVENT_KEY_UP) || (event->type == SDL_EVENT_KEY_DOWN));
+    //ASSERT(event->key.key < SDLK_LAST);
 
-    const U8 pushed = (event->type == SDL_KEYDOWN);
+    const U8 pushed = (event->type == SDL_EVENT_KEY_DOWN);
     if ((pushed) && (event->key.repeat) && (!sdlKeyRepeat))
         return;  // drop it.
 
-    U8 key = sdl_to_rws_keymap[event->key.keysym.sym];
-    U16 gkey = sdl_to_rws_gkeymap[event->key.keysym.sym];
+    U8 key = sdl_to_rws_keymap[event->key.key];
+    U16 gkey = sdl_to_rws_gkeymap[event->key.key];
     U8* pu8KeyStatus = (&ms_au8KeyStatus[key]);
 
     if (key == 0)
@@ -88,21 +88,21 @@ extern void Key_Event(SDL_Event *event)
 
     if (pushed)
     {
-        if ( (event->key.keysym.sym == SDLK_g) )
+        if ( (event->key.key == SDLK_G) )
         {
-            if (event->key.keysym.mod & KMOD_CTRL) // ctrl-g
+            if (event->key.mod & SDL_KMOD_CTRL) // ctrl-g
             {
-                const SDL_bool mode = SDL_GetWindowGrab(sdlWindow) ? SDL_FALSE : SDL_TRUE;
+                const bool mode = SDL_GetWindowMouseGrab(sdlWindow) ? false : true;
                 //SDL_SetRelativeMouseMode(mode);
-                SDL_SetWindowGrab(sdlWindow, mode);
-                mouse_grabbed = (mode == SDL_TRUE);
+                SDL_SetWindowMouseGrab(sdlWindow, mode);
+                mouse_grabbed = (mode == true);
                 return;  // don't pass this key event on to the game.
             }
         }
 
-        else if ( (event->key.keysym.sym == SDLK_RETURN) )
+        else if ( (event->key.key == SDLK_RETURN) )
         {
-            if (event->key.keysym.mod & KMOD_ALT) // alt-enter
+            if (event->key.mod & SDL_KMOD_ALT) // alt-enter
             {
                 if (SDL_GetWindowFlags(sdlWindow) & SDL_WINDOW_FULLSCREEN)
                     SDL_SetWindowFullscreen(sdlWindow, 0);
@@ -264,7 +264,7 @@ extern void Key_Init(void)
         SET_SDL_TO_RWS_KEYMAP(PAUSE);
         SET_SDL_TO_RWS_KEYMAP(SPACE);
         SET_SDL_TO_RWS_KEYMAP(PRINTSCREEN);
-        SET_SDL_TO_RWS_KEYMAP2(QUOTE, RQUOTE);
+        SET_SDL_TO_RWS_KEYMAP2(APOSTROPHE, RQUOTE);
         SET_SDL_TO_RWS_KEYMAP(COMMA);
         SET_SDL_TO_RWS_KEYMAP(MINUS);
         SET_SDL_TO_RWS_KEYMAP(PERIOD);
@@ -281,37 +281,37 @@ extern void Key_Init(void)
         SET_SDL_TO_RWS_KEYMAP(9);
         SET_SDL_TO_RWS_KEYMAP(SEMICOLON);
         SET_SDL_TO_RWS_KEYMAP(EQUALS);
-        SET_SDL_TO_RWS_KEYMAP2(a, A);
-        SET_SDL_TO_RWS_KEYMAP2(b, B);
-        SET_SDL_TO_RWS_KEYMAP2(c, C);
-        SET_SDL_TO_RWS_KEYMAP2(d, D);
-        SET_SDL_TO_RWS_KEYMAP2(e, E);
-        SET_SDL_TO_RWS_KEYMAP2(f, F);
-        SET_SDL_TO_RWS_KEYMAP2(g, G);
-        SET_SDL_TO_RWS_KEYMAP2(h, H);
-        SET_SDL_TO_RWS_KEYMAP2(i, I);
-        SET_SDL_TO_RWS_KEYMAP2(j, J);
-        SET_SDL_TO_RWS_KEYMAP2(k, K);
-        SET_SDL_TO_RWS_KEYMAP2(l, L);
-        SET_SDL_TO_RWS_KEYMAP2(m, M);
-        SET_SDL_TO_RWS_KEYMAP2(n, N);
-        SET_SDL_TO_RWS_KEYMAP2(o, O);
-        SET_SDL_TO_RWS_KEYMAP2(p, P);
-        SET_SDL_TO_RWS_KEYMAP2(q, Q);
-        SET_SDL_TO_RWS_KEYMAP2(r, R);
-        SET_SDL_TO_RWS_KEYMAP2(s, S);
-        SET_SDL_TO_RWS_KEYMAP2(t, T);
-        SET_SDL_TO_RWS_KEYMAP2(u, U);
-        SET_SDL_TO_RWS_KEYMAP2(v, V);
-        SET_SDL_TO_RWS_KEYMAP2(w, W);
-        SET_SDL_TO_RWS_KEYMAP2(x, X);
-        SET_SDL_TO_RWS_KEYMAP2(y, Y);
-        SET_SDL_TO_RWS_KEYMAP2(z, Z);
+        SET_SDL_TO_RWS_KEYMAP2(A, A);
+        SET_SDL_TO_RWS_KEYMAP2(B, B);
+        SET_SDL_TO_RWS_KEYMAP2(C, C);
+        SET_SDL_TO_RWS_KEYMAP2(D, D);
+        SET_SDL_TO_RWS_KEYMAP2(E, E);
+        SET_SDL_TO_RWS_KEYMAP2(F, F);
+        SET_SDL_TO_RWS_KEYMAP2(G, G);
+        SET_SDL_TO_RWS_KEYMAP2(H, H);
+        SET_SDL_TO_RWS_KEYMAP2(I, I);
+        SET_SDL_TO_RWS_KEYMAP2(J, J);
+        SET_SDL_TO_RWS_KEYMAP2(K, K);
+        SET_SDL_TO_RWS_KEYMAP2(L, L);
+        SET_SDL_TO_RWS_KEYMAP2(M, M);
+        SET_SDL_TO_RWS_KEYMAP2(N, N);
+        SET_SDL_TO_RWS_KEYMAP2(O, O);
+        SET_SDL_TO_RWS_KEYMAP2(P, P);
+        SET_SDL_TO_RWS_KEYMAP2(Q, Q);
+        SET_SDL_TO_RWS_KEYMAP2(R, R);
+        SET_SDL_TO_RWS_KEYMAP2(S, S);
+        SET_SDL_TO_RWS_KEYMAP2(T, T);
+        SET_SDL_TO_RWS_KEYMAP2(U, U);
+        SET_SDL_TO_RWS_KEYMAP2(V, V);
+        SET_SDL_TO_RWS_KEYMAP2(W, W);
+        SET_SDL_TO_RWS_KEYMAP2(X, X);
+        SET_SDL_TO_RWS_KEYMAP2(Y, Y);
+        SET_SDL_TO_RWS_KEYMAP2(Z, Z);
         SET_SDL_TO_RWS_KEYMAP2(LEFTBRACKET, LBRACKET);
         SET_SDL_TO_RWS_KEYMAP(BACKSLASH);
         SET_SDL_TO_RWS_KEYMAP2(RIGHTBRACKET, RBRACKET);
         SET_SDL_TO_RWS_KEYMAP2(KP_EQUALS, NUMPAD_EQUAL);
-        SET_SDL_TO_RWS_KEYMAP2(BACKQUOTE, LQUOTE);
+        SET_SDL_TO_RWS_KEYMAP2(GRAVE, LQUOTE);
         SET_SDL_TO_RWS_KEYMAP2(KP_0, NUMPAD_0);
         SET_SDL_TO_RWS_KEYMAP2(KP_1, NUMPAD_1);
         SET_SDL_TO_RWS_KEYMAP2(KP_2, NUMPAD_2);
@@ -456,7 +456,7 @@ extern int32_t rspGetToggleKeyStates(void)	// Returns toggle key state flags.
 	{
 	int32_t	lKeyStates	= 0;
 
-    const Uint8 *states = SDL_GetKeyboardState(NULL);
+    const bool *states = SDL_GetKeyboardState(NULL);
     //if (states[SDL_SCANCODE_CAPSLOCK]) lKeyStates |= RSP_CAPS_LOCK_ON;
     if (states[SDL_SCANCODE_NUMLOCKCLEAR]) lKeyStates |= RSP_NUM_LOCK_ON;
     if (states[SDL_SCANCODE_SCROLLLOCK]) lKeyStates |= RSP_SCROLL_LOCK_ON;
@@ -465,7 +465,7 @@ extern int32_t rspGetToggleKeyStates(void)	// Returns toggle key state flags.
 	//In this case works only for capslock
 	SDL_Keymod mod_state = SDL_GetModState();
 
-	if (mod_state & KMOD_CAPS)
+	if (mod_state & SDL_KMOD_CAPS)
 		lKeyStates |= RSP_CAPS_LOCK_ON;
 
 	return lKeyStates;

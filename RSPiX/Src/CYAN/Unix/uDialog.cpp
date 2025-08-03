@@ -65,63 +65,63 @@ extern int16_t rspMsgBox(	// Returns RSP_MB_RET_*.  See switch statement below.
             data.numbuttons = 1;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT |
                                SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_OK;
+            buttons[0].buttonID = RSP_MB_RET_OK;
             buttons[0].text = "OK";
             break;
 
         case RSP_MB_BUT_OKCANCEL:
             data.numbuttons = 2;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_OK;
+            buttons[0].buttonID = RSP_MB_RET_OK;
             buttons[0].text = "OK";
             buttons[1].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[1].buttonid = RSP_MB_RET_CANCEL;
+            buttons[1].buttonID = RSP_MB_RET_CANCEL;
             buttons[1].text = "Cancel";
             break;
 
         case RSP_MB_BUT_ABORTRETRYIGNORE:
             data.numbuttons = 3;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_ABORT;
+            buttons[0].buttonID = RSP_MB_RET_ABORT;
             buttons[0].text = "Abort";
             buttons[1].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-            buttons[1].buttonid = RSP_MB_RET_RETRY;
+            buttons[1].buttonID = RSP_MB_RET_RETRY;
             buttons[1].text = "Retry";
             buttons[2].flags = 0;
-            buttons[2].buttonid = RSP_MB_RET_IGNORE;
+            buttons[2].buttonID = RSP_MB_RET_IGNORE;
             buttons[2].text = "Ignore";
             break;
 
         case RSP_MB_BUT_YESNOCANCEL:
             data.numbuttons = 3;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_YES;
+            buttons[0].buttonID = RSP_MB_RET_YES;
             buttons[0].text = "Yes";
             buttons[1].flags = 0;
-            buttons[1].buttonid = RSP_MB_RET_NO;
+            buttons[1].buttonID = RSP_MB_RET_NO;
             buttons[1].text = "No";
             buttons[2].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[2].buttonid = RSP_MB_RET_CANCEL;
+            buttons[2].buttonID = RSP_MB_RET_CANCEL;
             buttons[2].text = "Cancel";
             break;
 
         case RSP_MB_BUT_YESNO:
             data.numbuttons = 2;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_YES;
+            buttons[0].buttonID = RSP_MB_RET_YES;
             buttons[0].text = "Yes";
             buttons[1].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[1].buttonid = RSP_MB_RET_NO;
+            buttons[1].buttonID = RSP_MB_RET_NO;
             buttons[1].text = "No";
             break;
 
         case RSP_MB_BUT_RETRYCANCEL:
             data.numbuttons = 2;
             buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-            buttons[0].buttonid = RSP_MB_RET_RETRY;
+            buttons[0].buttonID = RSP_MB_RET_RETRY;
             buttons[0].text = "Retry";
             buttons[1].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-            buttons[1].buttonid = RSP_MB_RET_CANCEL;
+            buttons[1].buttonID = RSP_MB_RET_CANCEL;
             buttons[1].text = "Cancel";
             break;
 

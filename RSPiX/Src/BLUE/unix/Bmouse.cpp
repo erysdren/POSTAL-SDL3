@@ -93,7 +93,7 @@ extern void rspGetMouse(
         return;  // drop mouse events if input isn't grabbed.
     }
 
-    int x, y;
+    float x, y;
     const Uint32 buttons = SDL_GetMouseState(&x, &y);
     SET(psX, x);
     SET(psY, y);
@@ -142,8 +142,8 @@ extern void Mouse_Event(SDL_Event *event)
 
     switch (event->type)
     {
-        case SDL_MOUSEBUTTONDOWN:
-        case SDL_MOUSEBUTTONUP:
+        case SDL_EVENT_MOUSE_BUTTON_DOWN:
+        case SDL_EVENT_MOUSE_BUTTON_UP:
         {
             pme->sX = event->button.x;
             pme->sY = event->button.y;
@@ -158,7 +158,7 @@ extern void Mouse_Event(SDL_Event *event)
                 default: val = 0; break;
             }
 
-            if (event->button.state == SDL_PRESSED)
+            if (event->button.down)
                 buttonState |= val;
             else
                 buttonState &= ~val;
@@ -166,7 +166,7 @@ extern void Mouse_Event(SDL_Event *event)
             pme->sButton = buttonState;
             break;
         }
-		case SDL_MOUSEWHEEL:
+		case SDL_EVENT_MOUSE_WHEEL:
 		{
 			int val;
 			if (event->wheel.y > 0)
@@ -194,7 +194,7 @@ extern void Mouse_Event(SDL_Event *event)
 	//Ignoring doubleclick because there aren't any sdl codes for it
 	switch (event->type) {
 
-		case SDL_MOUSEBUTTONDOWN:
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			switch (event->button.button) {
 				case SDL_BUTTON_LEFT:
 					pme->sType = RSP_MB0_PRESSED;
@@ -204,7 +204,7 @@ extern void Mouse_Event(SDL_Event *event)
 					break;
 			}
 			break;
-		case SDL_MOUSEBUTTONUP:
+		case SDL_EVENT_MOUSE_BUTTON_UP:
 			switch (event->button.button) {
 				case SDL_BUTTON_LEFT:
 					pme->sType = RSP_MB0_RELEASED;
@@ -238,7 +238,7 @@ extern void Mouse_Event(SDL_Event *event)
 	{
 		PRSP_MOUSE_EVENT newpme = ms_ameEvents + INC_N_WRAP(sEventIndex, MAX_EVENTS);
 		newpme->lTime = SDL_GetTicks();
-		newpme->sType = SDL_MOUSEBUTTONUP;
+		newpme->sType = SDL_EVENT_MOUSE_BUTTON_UP;
 		newpme->sButton = MouseWheelState;
 		ms_qmeEvents.EnQ(newpme);
 	}
@@ -360,7 +360,7 @@ extern void rspHideMouseCursor(void)
 	{
 	// Decrement show cursor count.
     if (--ms_sCursorShowLevel < 0)
-	    SDL_ShowCursor(0);
+	    SDL_HideCursor();
 	}
 
 //////////////////////////////////////////////////////////////////////////////
@@ -373,7 +373,7 @@ extern void rspShowMouseCursor(void)
 	{
 	// Increment show cursor count.
 	if (++ms_sCursorShowLevel >= 0)
-	    SDL_ShowCursor(1);
+	    SDL_ShowCursor();
 	}
 
 ///////////////////////////////////////////////////////////////////////////////

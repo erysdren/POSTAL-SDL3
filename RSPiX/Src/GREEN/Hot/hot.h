@@ -301,7 +301,7 @@ class RHot
 		InputEventCall	m_iecUser;	// User callback on input events.  Includes
 											// a full RInputEvent.
 											// All callbacks can be used simultaneously.
-		uint32_t		m_ulUser;			// User value passed to callbacks.
+		intptr_t		m_ulUser;			// User value passed to callbacks.
 
 		SListHots	m_slistActiveChildren;	// List of active child RHots.
 		ListHots		m_listChildren;			// List of all child RHots.

@@ -53,6 +53,7 @@ static bool audio_opened = false;
 static SDL_AudioSpec desired;
 static int32_t cur_buf_time = 0;
 static int32_t max_buf_time = 0;
+static SDL_AudioDeviceID device = 0;
 
 extern int16_t rspSetSoundOutMode(				// Returns 0 if successfull, non-zero otherwise
 	int32_t lSampleRate,								// In:  Sample rate
@@ -75,15 +76,16 @@ extern int16_t rspSetSoundOutMode(				// Returns 0 if successfull, non-zero othe
     }
 
     if (lBitsPerSample == 8)
-        desired.format = AUDIO_U8;
+        desired.format = SDL_AUDIO_U8;
     else if (lBitsPerSample == 16)
-        desired.format = AUDIO_S16SYS;
+        desired.format = SDL_AUDIO_S16;
     else
     {
 		TRACE("rspSetSoundOutMode(): Format must be 8 or 16 bit.\n");
         return -1;
     }
 
+#if 0
     // Fragment sizes I used for Serious Sam...seem to work well...
     if (desired.freq <= 11025)
         desired.samples = 512;
@@ -97,11 +99,10 @@ extern int16_t rspSetSoundOutMode(				// Returns 0 if successfull, non-zero othe
 #ifdef __ANDROID__
     desired.samples = 2048;
 #endif
+#endif
 
     desired.freq = lSampleRate;
     desired.channels = lChannels;
-    desired.callback = sdl_audio_callback;
-    desired.userdata = (void *) callback;
 
     cur_buf_time = lCurBufferTime;
     max_buf_time = lMaxBufferTime;
@@ -113,18 +114,18 @@ extern int16_t rspSetSoundOutMode(				// Returns 0 if successfull, non-zero othe
 
     if (!SDL_WasInit(SDL_INIT_AUDIO))
     {
-        if (SDL_Init(SDL_INIT_AUDIO) == -1)
+        if (!SDL_Init(SDL_INIT_AUDIO))
             return BLU_ERR_NO_DEVICE;
     }
 
-    if (SDL_OpenAudio(&desired, NULL) == -1)
+    if (!(device = SDL_OpenAudioDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &desired)))
     {
-		TRACE("rspSetSoundOutMode(): SDL_OpenAudio failed: %s.\n", SDL_GetError());
+		TRACE("rspSetSoundOutMode(): SDL_OpenAudioDevice failed: %s.\n", SDL_GetError());
         SDL_QuitSubSystem(SDL_INIT_AUDIO);
         return BLU_ERR_NO_DEVICE;
     }
 
-    SDL_PauseAudio(0);
+    SDL_ResumeAudioDevice(device);
 
     audio_opened = true;
     return 0;
@@ -155,8 +156,8 @@ extern void rspKillSoundOutMode(void)		// Returns 0 if successfull, non-zero oth
 {
     if (audio_opened)
     {
-        SDL_PauseAudio(1);
-        SDL_CloseAudio();
+        SDL_PauseAudioDevice(device);
+        SDL_CloseAudioDevice(device);
         audio_opened = false;
     }
 }
@@ -172,7 +173,7 @@ extern int16_t rspPauseSoundOut(void)		// Returns 0 on success, non-zero otherwi
     if (!audio_opened)
         return 0;
 
-    SDL_PauseAudio(1);
+    SDL_PauseAudioDevice(device);
     return 0;
 }
 
@@ -181,7 +182,7 @@ extern int16_t rspResumeSoundOut(void)		// Returns 0 on success, non-zero otherw
     if (!audio_opened)
         return 0;
 
-    SDL_PauseAudio(0);
+    SDL_ResumeAudioDevice(device);
     return 0;
 }
 
@@ -190,7 +191,7 @@ extern int16_t rspIsSoundOutPaused(void)	// Returns TRUE if paused, FALSE otherw
     if (!audio_opened)
         return TRUE;
 
-    return((SDL_GetAudioStatus() == SDL_AUDIO_PAUSED) ? TRUE : FALSE);
+    return(SDL_AudioDevicePaused(device) ? TRUE : FALSE);
 }
 
 extern int32_t rspGetSoundOutPos(void)		// Returns sound output position in bytes
@@ -212,14 +213,18 @@ extern int32_t rspDoSound(void)
 
 extern void rspLockSound(void)
 {
+#if 0
     if (audio_opened)
         SDL_LockAudio();
+#endif
 }
 
 extern void rspUnlockSound(void)
 {
+#if 0
     if (audio_opened)
         SDL_UnlockAudio();
+#endif
 }
 
 

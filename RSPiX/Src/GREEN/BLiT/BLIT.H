@@ -476,7 +476,7 @@ public:
 
 	CStrafe()
 		{
-		sHotX = sHotY = NULL;
+		sHotX = sHotY = 0;
 		psLinkX = psLinkY = NULL;
 		pImage = NULL;
 		}

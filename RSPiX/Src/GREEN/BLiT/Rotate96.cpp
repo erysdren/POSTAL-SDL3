@@ -1011,7 +1011,7 @@ int16_t rspStrafeRotate(void *pReturnArray,	// Output
 	// Restore the source picture to it's original form.
 	rspRemovePadding(pimSrc);
 	
-	return NULL;
+	return 0;
 	}
 
 //**************************************************************

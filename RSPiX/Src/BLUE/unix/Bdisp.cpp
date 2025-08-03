@@ -534,10 +534,10 @@ extern void rspQueryVideoModeReset(void)
 
 		// Attempt to grab user's current desktop resolution instead of forcing 640x480
 #ifndef MOBILE
-		SDL_DisplayMode dm_Mode;
-		int i_Result = SDL_GetDesktopDisplayMode(0, &dm_Mode);
-		if (!i_Result)
-			addMode(dm_Mode.w, dm_Mode.h, 8);
+		SDL_DisplayID id = SDL_GetPrimaryDisplay();
+		const SDL_DisplayMode *mode = SDL_GetDesktopDisplayMode(id);
+		if (mode)
+			addMode(mode->w, mode->h, 8);
 		else // Fall back to 640x480
 #endif
 			addMode(640, 480, 8);
@@ -592,32 +592,18 @@ extern int16_t rspQueryVideoMode(			// Returns 0 for each valid mode, then non-z
 	}
 
 
-static SDL_Renderer *createRendererToggleVsync(SDL_Window *window, const int index, bool vsync)
+static SDL_Renderer *createRendererToggleVsync(SDL_Window *window, const char *driver, bool vsync)
 {
-    SDL_Renderer *retval = NULL;
-    if (vsync)
-        retval = SDL_CreateRenderer(window, index, SDL_RENDERER_PRESENTVSYNC);
-    if (!retval)
-        retval = SDL_CreateRenderer(window, index, 0);
-    return retval;
+	SDL_Renderer *retval = NULL;
+	retval = SDL_CreateRenderer(window, driver);
+	SDL_SetRenderVSync(retval, vsync);
+	return retval;
 }
 
 static SDL_Renderer *createRendererByName(SDL_Window *window, const char *name)
 {
     const bool vsync = !rspCommandLine("novsync");
-    if (name == NULL)
-        return createRendererToggleVsync(window, -1, vsync);
-    else
-    {
-        const int max = SDL_GetNumRenderDrivers();
-        for (int i = 0; i < max; i++)
-        {
-            SDL_RendererInfo info;
-            if ((SDL_GetRenderDriverInfo(i, &info) == 0) && (SDL_strcmp(info.name, name) == 0))
-                return createRendererToggleVsync(window, i, vsync);
-        }
-    }
-    return NULL;
+    return createRendererToggleVsync(window, name, vsync);
 }
 
 
@@ -665,8 +651,6 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         for (size_t i = 0; i < 256; i++)
             apeApp[i].a = 0xFF;
 
-        SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-
         if (sPixelDoubling)
         {
             fprintf(stderr, "STUBBED: pixel doubling? %s:%d\n", __FILE__, __LINE__);
@@ -681,14 +665,12 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         Uint32 flags = 0;
         if (!rspCommandLine("windowed"))
         {
-            if ((!RequestedWidth) || (!RequestedHeight))
-                flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-            else
+            if ((RequestedWidth) && (RequestedHeight))
                 flags |= SDL_WINDOW_FULLSCREEN;
         }
 
         if (mouse_grabbed)
-            flags |= SDL_WINDOW_INPUT_GRABBED;
+            flags |= SDL_WINDOW_MOUSE_GRABBED;
 
 #if PLATFORM_IOS
         flags |= SDL_WINDOW_BORDERLESS;   // don't show the status bar
@@ -696,7 +678,7 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         //TRACE("RequestedWidth %d   RequestedHeight %d\n",RequestedWidth,RequestedHeight);
 
         const char *title = sdlAppName ? sdlAppName : "";
-        sdlWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, RequestedWidth, RequestedHeight, flags);
+        sdlWindow = SDL_CreateWindow(title, RequestedWidth, RequestedHeight, flags);
         if (!sdlWindow)
         {
             char buf[128];
@@ -743,7 +725,7 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         SDL_RenderClear(sdlRenderer);
         SDL_RenderPresent(sdlRenderer);
 #ifndef MOBILE //Need to remove this for the mouse point to be in the correct place, Android And IOS
-        SDL_RenderSetLogicalSize(sdlRenderer, FramebufferWidth, FramebufferHeight);
+        SDL_SetRenderLogicalPresentation(sdlRenderer, FramebufferWidth, FramebufferHeight, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 		TRACE("SDL Renderer set: %ix%i\n", FramebufferWidth, FramebufferHeight);
 #endif
         sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, FramebufferWidth, FramebufferHeight);
@@ -767,7 +749,7 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         SDL_memset(PalettedTexturePointer, '\0', FramebufferWidth * FramebufferHeight * sizeof (Uint8));
         SDL_UpdateTexture(sdlTexture, NULL, TexturePointer, FramebufferWidth * 4);
 
-    	SDL_ShowCursor(0);
+    	SDL_HideCursor();
         //SDL_SetRelativeMouseMode(mouse_grabbed ? SDL_TRUE : SDL_FALSE);
 
         return 0;
@@ -837,7 +819,7 @@ extern void rspPresentFrame(void)
 
     SDL_UpdateTexture(sdlTexture, NULL, TexturePointer, FramebufferWidth * 4);
     SDL_RenderClear(sdlRenderer);
-    SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
+    SDL_RenderTexture(sdlRenderer, sdlTexture, NULL, NULL);
     SDL_RenderPresent(sdlRenderer);  // off to the screen with you.
 
     static Uint32 lastframeticks = 0;

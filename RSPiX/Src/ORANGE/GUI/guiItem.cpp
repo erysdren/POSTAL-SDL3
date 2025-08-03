@@ -499,7 +499,7 @@ RGuiItem::RGuiItem()
 
 	m_fnInputEvent			= NULL;
 
-	m_ulUserInstance		= NULL;
+	m_ulUserInstance		= 0;
 	m_ulUserData			= 0;
 
 	m_sBorderThickness	= DEF_BORDER_THICKNESS;
