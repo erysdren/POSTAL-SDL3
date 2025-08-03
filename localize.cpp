@@ -206,11 +206,11 @@
 // Variables/data
 ////////////////////////////////////////////////////////////////////////////////
 
-extern char g_pszAppName[] = APP_NAME;
+char g_pszAppName[] = APP_NAME;
 
-extern char g_pszCriticalErrorTitle[] = APP_NAME;
+char g_pszCriticalErrorTitle[] = APP_NAME;
 
-extern char g_pszBadBlueInit[] =
+char g_pszBadBlueInit[] =
 	"A system incompatibility has been detected."
 	"\n\n"
 #ifdef WIN32
@@ -219,7 +219,7 @@ extern char g_pszBadBlueInit[] =
 #endif
 	"See code R100 in " APP_NAME " Help for more information.";
 
-extern char g_pszVideoModeError[] =
+char g_pszVideoModeError[] =
 	"The required display settings (%s) were reported by the system as being available, "
 	"but could not be set properly."
 	"\n\n"
@@ -228,7 +228,7 @@ extern char g_pszVideoModeError[] =
 	"\n\n"
 	"See code R101 in " APP_NAME " Help for more information.";
 
-extern char g_pszVideoChangeDepthError[] =
+char g_pszVideoChangeDepthError[] =
 	"The required display settings (%s) could not be set properly."
 	"\n\n"
 	"The required number of colors is different from your current settings."
@@ -237,7 +237,7 @@ extern char g_pszVideoChangeDepthError[] =
 	"\n\n"
 	"See code R102 in " APP_NAME " Help for more information.";
 
-extern char g_pszVideoDepthError[] =
+char g_pszVideoDepthError[] =
 	"The required display settings (%s) could not be set properly."
 	"\n\n"
 	"Your video card does not appear to support this number of colors."
@@ -247,7 +247,7 @@ extern char g_pszVideoDepthError[] =
 	"\n\n"
 	"See code R103 in " APP_NAME " Help for more information.";
 
-extern char g_pszVideoResolutionError[] =
+char g_pszVideoResolutionError[] =
 	"The required display settings (%s) could not be set properly."
 	"\n\n"
 	"Your video card does not appear to support this pixel area (resolution) with this "
@@ -258,7 +258,7 @@ extern char g_pszVideoResolutionError[] =
 	"\n\n"
 	"See code R104 in " APP_NAME " Help for more information.";
 
-extern char g_pszVideoPagesError[] =
+char g_pszVideoPagesError[] =
 	"The required display settings (%s) could not be set properly."
 	"\n\n"
 	"Your video card does not appear to support this number of pages at these settings."
@@ -268,7 +268,7 @@ extern char g_pszVideoPagesError[] =
 	"\n\n"
 	"See code R105 in " APP_NAME " Help for more information.";
 
-extern char	g_pszVideoChangeDepthErrorUnderGDI_s[]	=
+char	g_pszVideoChangeDepthErrorUnderGDI_s[]	=
 	"The required display settings (%s) could not be set properly because you are not "
 	"using DirectX."
 	"\n\n"
@@ -277,7 +277,7 @@ extern char	g_pszVideoChangeDepthErrorUnderGDI_s[]	=
 	"\n\n"
 	"See code R106 in " APP_NAME " Help for more information.";
 
-extern char g_pszAudioModeGeneralError_s[] =
+char g_pszAudioModeGeneralError_s[] =
 	"The required audio mode (%s) could not be set properly."
 	"\n\n"
 	"If the audio device is or was being used, it may be available once the current "
@@ -288,7 +288,7 @@ extern char g_pszAudioModeGeneralError_s[] =
 	"\n\n"
 	"If you want to stop the program, choose 'Abort'.";
 
-extern char g_pszAudioModeInUseError_s[]	=
+char g_pszAudioModeInUseError_s[]	=
 	"The required audio mode (%s) could not be set properly."
 	"\n\n"
 	"The audio device is or was being used, it may be available once the current "
@@ -299,7 +299,7 @@ extern char g_pszAudioModeInUseError_s[]	=
 	"\n\n"
 	"If you want to stop the program, choose 'Abort'.";
 
-extern char g_pszAudioModeNoDeviceError_s[]	=
+char g_pszAudioModeNoDeviceError_s[]	=
 	"The required audio mode (%s) could not be set properly."
 	"\n\n"
 	"There is no audio device or the driver is incorrectly installed or missing."
@@ -310,7 +310,7 @@ extern char g_pszAudioModeNoDeviceError_s[]	=
 	"\n\n"
 	"Would you like to continue without audio?";
 
-extern char g_pszAudioModeNotSupportedError_s[]	=
+char g_pszAudioModeNotSupportedError_s[]	=
 	"The audio mode (%s) could not be set properly."
 	"\n\n"
 	"The audio device does not support this mode."
@@ -322,7 +322,7 @@ extern char g_pszAudioModeNotSupportedError_s[]	=
 	"\n\n"
 	"If you want to continue without audio, choose 'Ignore'.";
 
-extern char g_pszAudioVanillaModeNotSupportedError_s[]	=
+char g_pszAudioVanillaModeNotSupportedError_s[]	=
 	"The audio mode (%s) could not be set properly."
 	"\n\n"
 	"The audio device does not support this mode."
@@ -333,68 +333,68 @@ extern char g_pszAudioVanillaModeNotSupportedError_s[]	=
 	"\n\n"
 	"Would you like to continue without audio?";
 
-extern char g_pszPrefFileName[] = PREFS_FILE;
+char g_pszPrefFileName[] = PREFS_FILE;
 
-extern char g_pszPrefOpenError[] =
+char g_pszPrefOpenError[] =
 	"The preference file '" PREFS_FILE "' could not be opened."
 	"\n\n"
 	"See code A100 in " APP_NAME " Help for more information.";
 
-extern char g_pszPrefReadError[] =
+char g_pszPrefReadError[] =
 	"An error occurred while reading from '" PREFS_FILE "'."
 	"\n\n"
 	"See code A101 in " APP_NAME " Help for more information.";
 
-extern char g_pszPrefWriteError[] =
+char g_pszPrefWriteError[] =
 	"An error occurred while saving to '" PREFS_FILE "'."
 	"\n\n"
 	"Any settings that you may have made will not be saved."
 	"\n\n"
 	"See code A102 in " APP_NAME " Help for more information.";
 
-extern char g_pszPrefReadOnly[] =
+char g_pszPrefReadOnly[] =
 	"The file '" PREFS_FILE "' is set to 'READ-ONLY'."
 	"\n\n"
 	"Any settings that you may have made will not be saved."
 	"\n\n"
 	"See code A103 in " APP_NAME " Help for more information.";
 
-extern char g_pszTitleError[] =
+char g_pszTitleError[] =
 	"An error occurred during the title sequence."
 	"\n\n"
 	"See code A104 in " APP_NAME " Help for more information.";
 
-extern char g_pszCantFindAssets[] =
+char g_pszCantFindAssets[] =
 	"One or more required files could not be found."
 	"\n\n"
 	CD_DRIVE_CHANGE_MESSAGE
 	"\n\n"
 	"See code A105 in " APP_NAME " Help for more information.";
 
-extern char g_pszWrongCD[] =
+char g_pszWrongCD[] =
 	"The original Postal CD is not in the drive it was installed from."
 	"\n\n"
 	"The CD in the drive does not appear to be the original Postal CD."
 	"\n\n"
 	"Please insert the original Postal CD and click on Retry.";
 
-extern char g_pszPromptForOriginalCD[] =
+char g_pszPromptForOriginalCD[] =
 	"Please make sure the original Postal CD\n"
 	"is in the drive it was installed from.";
 
-extern char g_pszNotOnCDROM[] =
+char g_pszNotOnCDROM[] =
 	"Please insert the " APP_NAME " CD into the drive you used to install it."
 	"\n\n"
 	CD_DRIVE_CHANGE_MESSAGE
 	"\n\n"
 	"See code A106 in " APP_NAME " Help for more information.";
 
-extern char g_pszGeneralError[] =
+char g_pszGeneralError[] =
 	"An error has occurred.  This application cannot proceed."
 	"\n\n"
 	"See code A107 in " APP_NAME " Help for more information.";
 
-extern char g_pszBadPath_s_s[] =
+char g_pszBadPath_s_s[] =
 	"One or more file locations for the game are invalid."
 	"\n\n"
 	CD_DRIVE_CHANGE_MESSAGE
@@ -403,7 +403,7 @@ extern char g_pszBadPath_s_s[] =
 	"\n\n"
 	"See code A108 in " APP_NAME " Help for more information.";
 
-extern char g_pszBadCDPath_s_s[] =
+char g_pszBadCDPath_s_s[] =
 	"Make sure the " APP_NAME " CD is in the drive you used to install it."
 	"\n\n"
 	CD_DRIVE_CHANGE_MESSAGE
@@ -412,13 +412,13 @@ extern char g_pszBadCDPath_s_s[] =
 	"\n\n"
 	"See code A108 in " APP_NAME " Help for more information.";
 
-extern char g_pszCannotOpenSoundFiles_s_s[]	=
+char g_pszCannotOpenSoundFiles_s_s[]	=
 	"Your audio hardware supports %s, but the " APP_NAME " file(s) associated with that "
 	"sound format were not installed."
 	"\n\n"
 	"See code A109 in " APP_NAME " Help for more information.";
 
-extern char g_pszNoSoundFiles[]	=
+char g_pszNoSoundFiles[]	=
 	"There is no sound file installed."
 	"\n\n"
 	"Please run " APP_NAME " Setup and choose a sound option."
@@ -426,64 +426,64 @@ extern char g_pszNoSoundFiles[]	=
 	"See code A110 in " APP_NAME " Help for more information.";
 
 
-extern char	g_pszAssetsMissingError[] =
+char	g_pszAssetsMissingError[] =
 	"One or more files needed by the editor could not be found.";
 
-extern char	g_pszSaveFileQuery[]	=
+char	g_pszSaveFileQuery[]	=
 	"Save file before this operation?";
 
-extern char g_pszSaveDemoTitle[]	=
+char g_pszSaveDemoTitle[]	=
 	"Save Demo";
 
-extern char g_pszSaveGameTitle[] = 
+char g_pszSaveGameTitle[] =
 	"Choose a name for your saved game";
 
-extern char g_pszSaveGameErrorTitle[] = 
+char g_pszSaveGameErrorTitle[] =
 	"Error saving file";
 
-extern char g_pszSaveGameErrorText[] = 
+char g_pszSaveGameErrorText[] =
 	"Your game could not be saved.  Check to see if your disk is full.";
 
-extern char g_pszLoadGameTitle[] = 
+char g_pszLoadGameTitle[] =
 	"Choose the game you wish to restore";
 
-extern char	g_pszFileOpenError_s[] =
+char	g_pszFileOpenError_s[] =
 	"Unable to open the file '%s'."
 	"\n\n"
 	"The file may be missing or corrupted, or you may not have permission to open it.";
 
-extern char	g_pszFileReadError_s[] =
+char	g_pszFileReadError_s[] =
 	"An error has occurred while reading from the file '%s'."
 	"\n\n"
 	"The file may be corrupted, or you may not have permission to access it.";
 
-extern char	g_pszFileWriteError_s[] =
+char	g_pszFileWriteError_s[] =
 	"An error has occurred while writing to the file '%s'."
 	"\n\n"
 	"The file may be corrupted, or you may not have permission to write to it.";
 
 
-extern char g_pszDispenserNoDispenseeTypeChosen[]	=
+char g_pszDispenserNoDispenseeTypeChosen[]	=
 	"You must choose a dispensee type or Cancel.";
 
-extern char g_pszGenericBrowseFor_s_Title[]	=
+char g_pszGenericBrowseFor_s_Title[]	=
 	"Browse for %s";
 
-extern char	g_pszGenericMustBeRelativePath_s[]	=
+char	g_pszGenericMustBeRelativePath_s[]	=
 	"You must choose a file below path \"%s\".\n";
 
-extern char g_pszDontDropYourselfMORON[]	=
+char g_pszDontDropYourselfMORON[]	=
 	"You don't really want to drop yourself!!\n"; 
 	
-extern char g_pszDoofusCannotFindNavNet_EditMode_hu_hu[]	=
+char g_pszDoofusCannotFindNavNet_EditMode_hu_hu[]	=
 	"Doofus with ID %hd found that ID %hd (its NavNet ID) was not "
 	"a NavNet.\n";
 
-extern char g_pszDoofusCannotFindNavNet_PlayMode_hu_hu[] =
+char g_pszDoofusCannotFindNavNet_PlayMode_hu_hu[] =
 	"A character with ID %hd was unable to locate its NavNet with "
 	"ID %hd.\n";
 
-extern char g_pszPlayOneRealmOnlyMessage[]	=
+char g_pszPlayOneRealmOnlyMessage[]	=
 	"This version of " APP_NAME " only allows you to play the"
 	"\n"
 	"levels that it came with."
@@ -496,9 +496,9 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 // NOTICE: These aren't currently available in any language other than english!
 #if ENGLISH_LOCALE
-	extern char g_pszEditorDisabled[]			=	"The editor is not available in this demo version.";
-	extern char g_pszMultiplayerDisabled[]		=	"Multiplayer is not available in this demo version.";
-	extern char g_pszBuy[]							=	"You can order the full version of the game from"
+	char g_pszEditorDisabled[]			=	"The editor is not available in this demo version.";
+	char g_pszMultiplayerDisabled[]		=	"Multiplayer is not available in this demo version.";
+	char g_pszBuy[]							=	"You can order the full version of the game from"
 																"\n\n"
 																"         www.gopostal.com"
 																"\n\n"
@@ -514,461 +514,461 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 #if ENGLISH_LOCALE ////////////////////////////////////////////////////////////
 
-	extern char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
-	extern char g_pszMainMenu_Start[]							= "START";
-	extern char g_pszMainMenu_Options[]							= "OPTIONS";
-	extern char g_pszMainMenu_Editor[]							= "EDITOR";
-	extern char g_pszMainMenu_Buy[]								= "ORDER INFO";
-	extern char g_pszMainMenu_Exit[]								= "EXIT";
+	char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
+	char g_pszMainMenu_Start[]							= "START";
+	char g_pszMainMenu_Options[]							= "OPTIONS";
+	char g_pszMainMenu_Editor[]							= "EDITOR";
+	char g_pszMainMenu_Buy[]								= "ORDER INFO";
+	char g_pszMainMenu_Exit[]								= "EXIT";
 
-	extern char g_pszVerifyExitMenu_Title[]					= "REALLY EXIT?";
-	extern char g_pszVerifyExitMenu_Yes[]						= "YES";
-	extern char g_pszVerifyExitMenu_No[]						= "NO";
+	char g_pszVerifyExitMenu_Title[]					= "REALLY EXIT?";
+	char g_pszVerifyExitMenu_Yes[]						= "YES";
+	char g_pszVerifyExitMenu_No[]						= "NO";
 
-	extern char g_pszVerifyQuitMenu_Title[]					= "REALLY QUIT?";
-	extern char g_pszVerifyQuitMenu_Yes[]						= "YES";
-	extern char g_pszVerifyQuitMenu_No[]						= "NO";
+	char g_pszVerifyQuitMenu_Title[]					= "REALLY QUIT?";
+	char g_pszVerifyQuitMenu_Yes[]						= "YES";
+	char g_pszVerifyQuitMenu_No[]						= "NO";
 
-	extern char g_pszGameMenu_Title[]							= "GAME";
-	extern char g_pszGameMenu_Continue[]						= "CONTINUE";
-	extern char g_pszGameMenu_Save[]								= "SAVE";
-	extern char g_pszGameMenu_Options[]							= "OPTIONS";
-	extern char g_pszGameMenu_Quit[]								= "QUIT";
+	char g_pszGameMenu_Title[]							= "GAME";
+	char g_pszGameMenu_Continue[]						= "CONTINUE";
+	char g_pszGameMenu_Save[]								= "SAVE";
+	char g_pszGameMenu_Options[]							= "OPTIONS";
+	char g_pszGameMenu_Quit[]								= "QUIT";
 
-	extern char g_pszEditorMenu_Title[]							= "EDITOR";
-	extern char g_pszEditorMenu_Continue[]						= "CONTINUE";
-	extern char g_pszEditorMenu_Options[]						= "OPTIONS";
-	extern char g_pszEditorMenu_Quit[]							= "QUIT";
+	char g_pszEditorMenu_Title[]							= "EDITOR";
+	char g_pszEditorMenu_Continue[]						= "CONTINUE";
+	char g_pszEditorMenu_Options[]						= "OPTIONS";
+	char g_pszEditorMenu_Quit[]							= "QUIT";
 
-	extern char g_pszOptionsMenu_Title[]						= "OPTIONS";
-	extern char g_pszOptionsMenu_Video[]						= "VIDEO";
-	extern char g_pszOptionsMenu_Audio[]						= "AUDIO";
-	extern char g_pszOptionsMenu_Controls[]					= "CONTROLS";
-	extern char g_pszOptionsMenu_Multiplayer[]				= "MULTIPLAYER";
-	extern char g_pszOptionsMenu_Performance[]				= "PERFORMANCE";
-	extern char g_pszOptionsMenu_Difficulty[]					= "DIFFICULTY";
-	extern char g_pszOptionsMenu_Crosshair[]					= "CROSSHAIR";
+	char g_pszOptionsMenu_Title[]						= "OPTIONS";
+	char g_pszOptionsMenu_Video[]						= "VIDEO";
+	char g_pszOptionsMenu_Audio[]						= "AUDIO";
+	char g_pszOptionsMenu_Controls[]					= "CONTROLS";
+	char g_pszOptionsMenu_Multiplayer[]				= "MULTIPLAYER";
+	char g_pszOptionsMenu_Performance[]				= "PERFORMANCE";
+	char g_pszOptionsMenu_Difficulty[]					= "DIFFICULTY";
+	char g_pszOptionsMenu_Crosshair[]					= "CROSSHAIR";
 #ifdef KID_FRIENDLY_OPTION
-	extern char g_pszOptionsMenu_KidMode[]						= "KID MODE";
+	char g_pszOptionsMenu_KidMode[]						= "KID MODE";
 #endif
-	extern char g_pszDifficultyMenu_Title[]					= "DIFFICULTY";
-	extern char g_pszDifficultyMenu_SetDifficulty[]			= "SET";
+	char g_pszDifficultyMenu_Title[]					= "DIFFICULTY";
+	char g_pszDifficultyMenu_SetDifficulty[]			= "SET";
 
-	extern char g_pszOrganMenu_Title[]							= "SOUND TEST";
-	extern char g_pszOrganMenu_SpecialKeysHeading[]			= "SPECIAL KEYS";
-	extern char g_pszOrganMenu_NumericKeysFunction[]		= "  0 thru 9 - PLAY A SOUND";
-	extern char g_pszOrganMenu_AlphaKeysFunction[]			= "  A thru Z - PLAY A SOUND";
-	extern char g_pszOrganMenu_TabKeyFunction[]				= "  TAB - NEXT SET OF SOUNDS";
-	extern char g_pszOrganMenu_Exit[]							= "EXIT";
+	char g_pszOrganMenu_Title[]							= "SOUND TEST";
+	char g_pszOrganMenu_SpecialKeysHeading[]			= "SPECIAL KEYS";
+	char g_pszOrganMenu_NumericKeysFunction[]		= "  0 thru 9 - PLAY A SOUND";
+	char g_pszOrganMenu_AlphaKeysFunction[]			= "  A thru Z - PLAY A SOUND";
+	char g_pszOrganMenu_TabKeyFunction[]				= "  TAB - NEXT SET OF SOUNDS";
+	char g_pszOrganMenu_Exit[]							= "EXIT";
 
-	extern char g_pszAudioMenu_Title[]							= "AUDIO";
-	extern char g_pszAudioMenu_Mixer[]							= "MIXER";
-	extern char g_pszAudioMenu_SoundTest[]						= "SOUND TEST";
-	extern char g_pszAudioMenu_Language[]						= "LANGUAGE";
-	extern char g_pszAudioMenu_PainFrequency[]					= "PAIN FREQ.";
-	extern char g_pszAudioMenu_English[]						= "English";
-	extern char g_pszAudioMenu_Japanese[]						= "Japanese";
+	char g_pszAudioMenu_Title[]							= "AUDIO";
+	char g_pszAudioMenu_Mixer[]							= "MIXER";
+	char g_pszAudioMenu_SoundTest[]						= "SOUND TEST";
+	char g_pszAudioMenu_Language[]						= "LANGUAGE";
+	char g_pszAudioMenu_PainFrequency[]					= "PAIN FREQ.";
+	char g_pszAudioMenu_English[]						= "English";
+	char g_pszAudioMenu_Japanese[]						= "Japanese";
 
-	extern char g_pszVideoMenu_Title[]							= "VIDEO";
-	extern char g_pszVideoMenu_Gamma[]							= "GAMMA";
+	char g_pszVideoMenu_Title[]							= "VIDEO";
+	char g_pszVideoMenu_Gamma[]							= "GAMMA";
 
-	extern char g_pszControlsMenu_Title[]						= "CONTROLS";
-	extern char g_pszControlsMenu_KeyboardSetup[]			= "KEYBOARD SETUP";
-	extern char g_pszControlsMenu_MouseSetup[]				= "MOUSE SETUP";
-	extern char g_pszControlsMenu_JoystickSetup[]			= "X CONTROLLER SETUP";
-	extern char g_pszControlsMenu_TurningSpeeds[]			= "TURNING SPEEDS";
-	extern char g_pszControlsMenu_UseMouse[]					= "USE MOUSE";
-	extern char g_pszControlsMenu_ClassicMouse[]			= "CLASSIC MOUSE";	
-	extern char g_pszControlsMenu_HorizMouseSensitivity[]	= "HORIZ MOUSE SENS.";
-	extern char g_pszControlsMenu_VertMouseSensitivity[]	= "VERT MOUSE SENS.";
+	char g_pszControlsMenu_Title[]						= "CONTROLS";
+	char g_pszControlsMenu_KeyboardSetup[]			= "KEYBOARD SETUP";
+	char g_pszControlsMenu_MouseSetup[]				= "MOUSE SETUP";
+	char g_pszControlsMenu_JoystickSetup[]			= "X CONTROLLER SETUP";
+	char g_pszControlsMenu_TurningSpeeds[]			= "TURNING SPEEDS";
+	char g_pszControlsMenu_UseMouse[]					= "USE MOUSE";
+	char g_pszControlsMenu_ClassicMouse[]			= "CLASSIC MOUSE";
+	char g_pszControlsMenu_HorizMouseSensitivity[]	= "HORIZ MOUSE SENS.";
+	char g_pszControlsMenu_VertMouseSensitivity[]	= "VERT MOUSE SENS.";
 
-	extern char g_pszKeyboardSetupMenu_Title[]				= "KEYBOARD SETUP";
+	char g_pszKeyboardSetupMenu_Title[]				= "KEYBOARD SETUP";
 
-	extern char g_pszMouseSetupMenu_Title[]					= "MOUSE SETUP";
+	char g_pszMouseSetupMenu_Title[]					= "MOUSE SETUP";
 
-	extern char g_pszJoystickSetupMenu_Title[]				= "X CONTROLLER SETUP";
+	char g_pszJoystickSetupMenu_Title[]				= "X CONTROLLER SETUP";
 
-	extern char g_pszPerformanceMenu_Title[]					= "PERFORMANCE";
-	extern char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENCY";
-	extern char g_pszPerformanceMenu_3dLighting[]			= "3D LIGHTING";
-	extern char g_pszPerformanceMenu_Particles[]				= "PARTICLES";
-	extern char g_pszPerformanceMenu_DynamicVolume[]		= "DYNAMIC VOLUME";
-	extern char g_pszPerformanceMenu_AmbientSounds[]		= "AMBIENT SOUNDS";
+	char g_pszPerformanceMenu_Title[]					= "PERFORMANCE";
+	char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENCY";
+	char g_pszPerformanceMenu_3dLighting[]			= "3D LIGHTING";
+	char g_pszPerformanceMenu_Particles[]				= "PARTICLES";
+	char g_pszPerformanceMenu_DynamicVolume[]		= "DYNAMIC VOLUME";
+	char g_pszPerformanceMenu_AmbientSounds[]		= "AMBIENT SOUNDS";
 
-	extern char g_pszRotationSetupMenu_Title[]				= "TURNING SPEEDS ";
-	extern char g_pszRotationSetupMenu_RunningSlow[]		= "RUNNING (SLOW)";
-	extern char g_pszRotationSetupMenu_RunningFast[]		= "RUNNING (FAST)";
-	extern char g_pszRotationSetupMenu_StandingSlow[]		= "STANDING (SLOW)";
-	extern char g_pszRotationSetupMenu_StandingFast[]		= "STANDING (FAST)";
-	extern char g_pszRotationSetupMenu_TapDegrees[]			= "TAP DEGREES";
-	extern char g_pszRotationSetupMenu_RestoreDefaults[]	= "RESTORE DEFAULTS";
-	extern char g_pszRotationSetupMenu_RestoreDefaultsOld[] = "RESTORE OLD DEFAULTS";
+	char g_pszRotationSetupMenu_Title[]				= "TURNING SPEEDS ";
+	char g_pszRotationSetupMenu_RunningSlow[]		= "RUNNING (SLOW)";
+	char g_pszRotationSetupMenu_RunningFast[]		= "RUNNING (FAST)";
+	char g_pszRotationSetupMenu_StandingSlow[]		= "STANDING (SLOW)";
+	char g_pszRotationSetupMenu_StandingFast[]		= "STANDING (FAST)";
+	char g_pszRotationSetupMenu_TapDegrees[]			= "TAP DEGREES";
+	char g_pszRotationSetupMenu_RestoreDefaults[]	= "RESTORE DEFAULTS";
+	char g_pszRotationSetupMenu_RestoreDefaultsOld[] = "RESTORE OLD DEFAULTS";
 
-	extern char g_pszVolumesMenu_Title[]						= "AUDIO MIXER";
+	char g_pszVolumesMenu_Title[]						= "AUDIO MIXER";
 
-	extern char g_pszStartGameMenu_Title[]						= "START GAME";
-	extern char g_pszStartGameMenu_SinglePlayer[]			= "SINGLE PLAYER";
-	extern char g_pszStartGameMenu_Multiplayer[]				= "MULTIPLAYER";
-	extern char g_pszStartGameMenu_Demo[]						= "DEMO";
+	char g_pszStartGameMenu_Title[]						= "START GAME";
+	char g_pszStartGameMenu_SinglePlayer[]			= "SINGLE PLAYER";
+	char g_pszStartGameMenu_Multiplayer[]				= "MULTIPLAYER";
+	char g_pszStartGameMenu_Demo[]						= "DEMO";
 
-	extern char g_pszStartSinglePlayerMenu_Title[]			= "SINGLE PLAYER";
+	char g_pszStartSinglePlayerMenu_Title[]			= "SINGLE PLAYER";
 #if defined(START_MENU_ADDON_ITEM)
 	#if TARGET == JAPAN_ADD_ON
-		extern char g_pszStartSinglePlayerMenu_New[]			= "GO POSTAL IN THE USA";
-		extern char g_pszStartSinglePlayerMenu_AddOn[]		= "GO POSTAL IN JAPAN";
+		char g_pszStartSinglePlayerMenu_New[]			= "GO POSTAL IN THE USA";
+		char g_pszStartSinglePlayerMenu_AddOn[]		= "GO POSTAL IN JAPAN";
 	#elif TARGET == POSTAL_PLUS
-		extern char g_pszStartSinglePlayerMenu_New[]			= "NEW GAME (ALL LEVELS)";
-		extern char g_pszStartSinglePlayerMenu_AddOn[]		= "SPECIAL DELIVERY LEVELS";
+		char g_pszStartSinglePlayerMenu_New[]			= "NEW GAME (ALL LEVELS)";
+		char g_pszStartSinglePlayerMenu_AddOn[]		= "SPECIAL DELIVERY LEVELS";
 	#elif TARGET == POSTAL_2015
-		extern char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NEW CAMPAIGN";
-		extern char g_pszStartSinglePlayerMenu_New[]		= "POSTAL";
-		extern char g_pszStartSinglePlayerMenu_AddOn[]		= "SPECIAL DELIVERY";
-		extern char g_pszStartSinglePlayerMenu_AddOn2[]		= "SUPER POSTAL";
-		extern char g_pszStartSinglePlayerMenu_AllLevels[]	= "EXCESS POSTAGE (ALL LEVELS)";
+		char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NEW CAMPAIGN";
+		char g_pszStartSinglePlayerMenu_New[]		= "POSTAL";
+		char g_pszStartSinglePlayerMenu_AddOn[]		= "SPECIAL DELIVERY";
+		char g_pszStartSinglePlayerMenu_AddOn2[]		= "SUPER POSTAL";
+		char g_pszStartSinglePlayerMenu_AllLevels[]	= "EXCESS POSTAGE (ALL LEVELS)";
 	#else
 		#error Strings must be customized for current TARGET
 	#endif
 #else
 	#if TARGET == SUPER_POSTAL
-		extern char g_pszStartSinglePlayerMenu_New[]			= "GO POSTAL ALL OVER";
+		char g_pszStartSinglePlayerMenu_New[]			= "GO POSTAL ALL OVER";
 	#elif (TARGET == POSTAL_PLUS || TARGET == POSTAL_2015)
-		extern char g_pszStartSinglePlayerMenu_New[]			= "NEW GAME";
+		char g_pszStartSinglePlayerMenu_New[]			= "NEW GAME";
 	#else
 		#error Strings must be customized for current TARGET
 	#endif
 #endif
-	extern char g_pszStartSinglePlayerMenu_LoadLevel[]		= "LEVEL SELECT";
-	extern char g_pszStartSinglePlayerMenu_LoadGame[]		= "LOAD GAME";
-	extern char g_pszStartSinglePlayerMenu_Challenge[]		= "GAUNTLET CHALLENGE";
+	char g_pszStartSinglePlayerMenu_LoadLevel[]		= "LEVEL SELECT";
+	char g_pszStartSinglePlayerMenu_LoadGame[]		= "LOAD GAME";
+	char g_pszStartSinglePlayerMenu_Challenge[]		= "GAUNTLET CHALLENGE";
 
-	extern char g_pszStartChallengeMenu_Title[]				= "CHALLENGE";
-	extern char g_pszStartChallengeMenu_Gauntlet[]			= "THE GAUNTLET";
-	extern char g_pszStartChallengeMenu_Timed[]				= "TIMED";
-	extern char g_pszStartChallengeMenu_Goal[]				= "GOAL";
-	extern char g_pszStartChallengeMenu_Flag[]				= "FLAG";
-	extern char g_pszStartChallengeMenu_CheckPoint[]		= "CHECKPOINT";
+	char g_pszStartChallengeMenu_Title[]				= "CHALLENGE";
+	char g_pszStartChallengeMenu_Gauntlet[]			= "THE GAUNTLET";
+	char g_pszStartChallengeMenu_Timed[]				= "TIMED";
+	char g_pszStartChallengeMenu_Goal[]				= "GOAL";
+	char g_pszStartChallengeMenu_Flag[]				= "FLAG";
+	char g_pszStartChallengeMenu_CheckPoint[]		= "CHECKPOINT";
 
-	extern char g_pszStartMultiplayerMenu_Title[]			= "MULTIPLAYER";
-	extern char g_pszStartMultiplayerMenu_Join[]				= "JOIN GAME";
-	extern char g_pszStartMultiplayerMenu_Host[]				= "HOST GAME";
-	extern char g_pszStartMultiplayerMenu_Options[]			= "OPTIONS";
+	char g_pszStartMultiplayerMenu_Title[]			= "MULTIPLAYER";
+	char g_pszStartMultiplayerMenu_Join[]				= "JOIN GAME";
+	char g_pszStartMultiplayerMenu_Host[]				= "HOST GAME";
+	char g_pszStartMultiplayerMenu_Options[]			= "OPTIONS";
 
 
-	extern char g_pszJoinGameMenu_Title[]						= "JOIN GAME";
-	extern char g_pszJoinGameMenu_Browse[]						= "BROWSE (LAN only)";
-	extern char g_pszJoinGameMenu_ConnectTo[]					= "CONNECT TO";
+	char g_pszJoinGameMenu_Title[]						= "JOIN GAME";
+	char g_pszJoinGameMenu_Browse[]						= "BROWSE (LAN only)";
+	char g_pszJoinGameMenu_ConnectTo[]					= "CONNECT TO";
 
-	extern char g_pszHostGameMenu_Title[]						= "HOST GAME";
-	extern char g_pszHostGameMenu_Start[]						= "START";
+	char g_pszHostGameMenu_Title[]						= "HOST GAME";
+	char g_pszHostGameMenu_Start[]						= "START";
 
-	extern char g_pszStartDemoMenu_Title[]						= "DEMO";
-	extern char g_pszStartDemoMenu_Browse[]					= "BROWSE";
-	extern char g_pszStartDemoMenu_Play[]						= "PLAY";
-	extern char g_pszStartDemoMenu_Record[]					= "RECORD";
-	extern char g_pszStartDemoMenu_ConSite[]				= "CONSTRUCTION";
-	extern char g_pszStartDemoMenu_Home[]					= "HOME";
-	extern char g_pszStartDemoMenu_Bridge[]					= "BRIDGE";
+	char g_pszStartDemoMenu_Title[]						= "DEMO";
+	char g_pszStartDemoMenu_Browse[]					= "BROWSE";
+	char g_pszStartDemoMenu_Play[]						= "PLAY";
+	char g_pszStartDemoMenu_Record[]					= "RECORD";
+	char g_pszStartDemoMenu_ConSite[]				= "CONSTRUCTION";
+	char g_pszStartDemoMenu_Home[]					= "HOME";
+	char g_pszStartDemoMenu_Bridge[]					= "BRIDGE";
 
-	extern char g_pszMultiplayerSetupMenu_Title[]			= "MULTIPLAYER";
-	extern char g_pszMultiplayerSetupMenu_Name[]				= "NAME";
-	extern char g_pszMultiplayerSetupMenu_Color[]			= "COAT COLOR";
-	extern char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOCOL";
-	extern char g_pszMultiplayerSetupMenu_Connection[]		= "CONNECTION";
+	char g_pszMultiplayerSetupMenu_Title[]			= "MULTIPLAYER";
+	char g_pszMultiplayerSetupMenu_Name[]				= "NAME";
+	char g_pszMultiplayerSetupMenu_Color[]			= "COAT COLOR";
+	char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOCOL";
+	char g_pszMultiplayerSetupMenu_Connection[]		= "CONNECTION";
 
 	// Keep at end -- was not in original localizable text.
-	extern char g_pszControlsMenu_UseJoystick[]				= "USE X CONTROLLER";
+	char g_pszControlsMenu_UseJoystick[]				= "USE X CONTROLLER";
 
 #elif LOCALE == GERMAN	///////////////////////////////////////////////////////
 
-	extern char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
-	extern char g_pszMainMenu_Start[]							= "SPIEL STARTEN";
-	extern char g_pszMainMenu_Options[]							= "OPTIONEN";
-	extern char g_pszMainMenu_Editor[]							= "EDITOR";
-	extern char g_pszMainMenu_Buy[]								= "ORDER INFO";
-	extern char g_pszMainMenu_Exit[]								= "BEENDEN";
+	char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
+	char g_pszMainMenu_Start[]							= "SPIEL STARTEN";
+	char g_pszMainMenu_Options[]							= "OPTIONEN";
+	char g_pszMainMenu_Editor[]							= "EDITOR";
+	char g_pszMainMenu_Buy[]								= "ORDER INFO";
+	char g_pszMainMenu_Exit[]								= "BEENDEN";
 
-	extern char g_pszVerifyExitMenu_Title[]					= "WIRKLICH BEENDEN?";
-	extern char g_pszVerifyExitMenu_Yes[]						= "JA";
-	extern char g_pszVerifyExitMenu_No[]						= "NEIN";
+	char g_pszVerifyExitMenu_Title[]					= "WIRKLICH BEENDEN?";
+	char g_pszVerifyExitMenu_Yes[]						= "JA";
+	char g_pszVerifyExitMenu_No[]						= "NEIN";
 
-	extern char g_pszVerifyQuitMenu_Title[]					= "WIRKLICH BEENDEN?";
-	extern char g_pszVerifyQuitMenu_Yes[]						= "JA";
-	extern char g_pszVerifyQuitMenu_No[]						= "NEIN";
+	char g_pszVerifyQuitMenu_Title[]					= "WIRKLICH BEENDEN?";
+	char g_pszVerifyQuitMenu_Yes[]						= "JA";
+	char g_pszVerifyQuitMenu_No[]						= "NEIN";
 
-	extern char g_pszGameMenu_Title[]							= "SPIEL";
-	extern char g_pszGameMenu_Continue[]						= "WEITER";
-	extern char g_pszGameMenu_Save[]								= "SPEICHERN";
-	extern char g_pszGameMenu_Options[]							= "OPTIONEN";
-	extern char g_pszGameMenu_Quit[]								= "BEENDEN";
+	char g_pszGameMenu_Title[]							= "SPIEL";
+	char g_pszGameMenu_Continue[]						= "WEITER";
+	char g_pszGameMenu_Save[]								= "SPEICHERN";
+	char g_pszGameMenu_Options[]							= "OPTIONEN";
+	char g_pszGameMenu_Quit[]								= "BEENDEN";
 
-	extern char g_pszEditorMenu_Title[]							= "EDITOR";
-	extern char g_pszEditorMenu_Continue[]						= "WEITER";
-	extern char g_pszEditorMenu_Options[]						= "OPTIONEN";
-	extern char g_pszEditorMenu_Quit[]							= "BEENDEN";
+	char g_pszEditorMenu_Title[]							= "EDITOR";
+	char g_pszEditorMenu_Continue[]						= "WEITER";
+	char g_pszEditorMenu_Options[]						= "OPTIONEN";
+	char g_pszEditorMenu_Quit[]							= "BEENDEN";
 
-	extern char g_pszOptionsMenu_Title[]						= "OPTIONEN";
-	extern char g_pszOptionsMenu_Video[]						= "VIDEO";
-	extern char g_pszOptionsMenu_Audio[]						= "AUDIO";
-	extern char g_pszOptionsMenu_Controls[]					= "STEUERUNG";
-	extern char g_pszOptionsMenu_Multiplayer[]				= "MEHRERE SPIELER";
-	extern char g_pszOptionsMenu_Performance[]				= "LEISTUNG";
-	extern char g_pszOptionsMenu_Difficulty[]					= "SCHWIERIGKEIT";
+	char g_pszOptionsMenu_Title[]						= "OPTIONEN";
+	char g_pszOptionsMenu_Video[]						= "VIDEO";
+	char g_pszOptionsMenu_Audio[]						= "AUDIO";
+	char g_pszOptionsMenu_Controls[]					= "STEUERUNG";
+	char g_pszOptionsMenu_Multiplayer[]				= "MEHRERE SPIELER";
+	char g_pszOptionsMenu_Performance[]				= "LEISTUNG";
+	char g_pszOptionsMenu_Difficulty[]					= "SCHWIERIGKEIT";
 #ifdef KID_FRIENDLY_OPTION
-	extern char g_pszOptionsMenu_KidMode[]						= "KID-MODUS";  // FIXME: Google translated, again. But does it matter this time?
+	char g_pszOptionsMenu_KidMode[]						= "KID-MODUS";  // FIXME: Google translated, again. But does it matter this time?
 #endif
-	extern char g_pszDifficultyMenu_Title[]					= "SCHWIERIGKEIT";
-	extern char g_pszDifficultyMenu_SetDifficulty[]			= "";
+	char g_pszDifficultyMenu_Title[]					= "SCHWIERIGKEIT";
+	char g_pszDifficultyMenu_SetDifficulty[]			= "";
 
-	extern char g_pszOrganMenu_Title[]							= "SOUND-TEST";
-	extern char g_pszOrganMenu_SpecialKeysHeading[]			= "SONDERTASTEN";
-	extern char g_pszOrganMenu_NumericKeysFunction[]		= "0 BIS 9 - SOUND ABSPIELEN";
-	extern char g_pszOrganMenu_AlphaKeysFunction[]			= "A BIS Z - SOUND ABSPIELEN";
-	extern char g_pszOrganMenu_TabKeyFunction[]				= "TAB - NACHSTE SOUND-REIHE";
-	extern char g_pszOrganMenu_Exit[]							= "BEENDEN";
+	char g_pszOrganMenu_Title[]							= "SOUND-TEST";
+	char g_pszOrganMenu_SpecialKeysHeading[]			= "SONDERTASTEN";
+	char g_pszOrganMenu_NumericKeysFunction[]		= "0 BIS 9 - SOUND ABSPIELEN";
+	char g_pszOrganMenu_AlphaKeysFunction[]			= "A BIS Z - SOUND ABSPIELEN";
+	char g_pszOrganMenu_TabKeyFunction[]				= "TAB - NACHSTE SOUND-REIHE";
+	char g_pszOrganMenu_Exit[]							= "BEENDEN";
 
-	extern char g_pszAudioMenu_Title[]							= "AUDIO";
-	extern char g_pszAudioMenu_Mixer[]							= "MISCHPULT";
-	extern char g_pszAudioMenu_SoundTest[]						= "SOUND-TEST";
-	extern char g_pszAudioMenu_Language[]						= "SPRACHE"; // Google Translated, but almost certainly right
-	extern char g_pszAudioMenu_English[]						= "Englisch"; // Google Translated
-	extern char g_pszAudioMenu_Japanese[]						= "Japanisch"; // Google Translated
-	extern char g_pszAudioMenu_PainFrequency[]					= "SCHMERZFREQUENZ"; // Google Translated
+	char g_pszAudioMenu_Title[]							= "AUDIO";
+	char g_pszAudioMenu_Mixer[]							= "MISCHPULT";
+	char g_pszAudioMenu_SoundTest[]						= "SOUND-TEST";
+	char g_pszAudioMenu_Language[]						= "SPRACHE"; // Google Translated, but almost certainly right
+	char g_pszAudioMenu_English[]						= "Englisch"; // Google Translated
+	char g_pszAudioMenu_Japanese[]						= "Japanisch"; // Google Translated
+	char g_pszAudioMenu_PainFrequency[]					= "SCHMERZFREQUENZ"; // Google Translated
 
-	extern char g_pszVideoMenu_Title[]							= "VIDEO";
-	extern char g_pszVideoMenu_Gamma[]							= "GAMMA";
+	char g_pszVideoMenu_Title[]							= "VIDEO";
+	char g_pszVideoMenu_Gamma[]							= "GAMMA";
 
-	extern char g_pszControlsMenu_Title[]						= "STEUERUNG";
-	extern char g_pszControlsMenu_KeyboardSetup[]			= "TASTATUR-SETUP";
-	extern char g_pszControlsMenu_MouseSetup[]				= "MAUS-SETUP";
-	extern char g_pszControlsMenu_JoystickSetup[]			= "JOYSTICK-SETUP";
-	extern char g_pszControlsMenu_TurningSpeeds[]			= "DREHGESCHWINDIGKEITEN";
-	extern char g_pszControlsMenu_UseMouse[]					= "MAUS VERWENDEN";
-	extern char g_pszControlsMenu_ClassicMouse[] = "KLASSISCHE MAUSSTEUERUNG";
-	extern char g_pszControlsMenu_HorizMouseSensitivity[]	= "HORIZONTALE MAUSBEWEGUNG";
-	extern char g_pszControlsMenu_VertMouseSensitivity[]	= "VERTIKALE MAUSBEWEGUNG";
+	char g_pszControlsMenu_Title[]						= "STEUERUNG";
+	char g_pszControlsMenu_KeyboardSetup[]			= "TASTATUR-SETUP";
+	char g_pszControlsMenu_MouseSetup[]				= "MAUS-SETUP";
+	char g_pszControlsMenu_JoystickSetup[]			= "JOYSTICK-SETUP";
+	char g_pszControlsMenu_TurningSpeeds[]			= "DREHGESCHWINDIGKEITEN";
+	char g_pszControlsMenu_UseMouse[]					= "MAUS VERWENDEN";
+	char g_pszControlsMenu_ClassicMouse[] = "KLASSISCHE MAUSSTEUERUNG";
+	char g_pszControlsMenu_HorizMouseSensitivity[]	= "HORIZONTALE MAUSBEWEGUNG";
+	char g_pszControlsMenu_VertMouseSensitivity[]	= "VERTIKALE MAUSBEWEGUNG";
 
-	extern char g_pszKeyboardSetupMenu_Title[]				= "TASTATUR-SETUP";
+	char g_pszKeyboardSetupMenu_Title[]				= "TASTATUR-SETUP";
 
-	extern char g_pszMouseSetupMenu_Title[]					= "MAUS-SETUP";
+	char g_pszMouseSetupMenu_Title[]					= "MAUS-SETUP";
 
-	extern char g_pszJoystickSetupMenu_Title[]				= "JOYSTICK-SETUP";
+	char g_pszJoystickSetupMenu_Title[]				= "JOYSTICK-SETUP";
 
-	extern char g_pszPerformanceMenu_Title[]					= "LEISTUNG";
-	extern char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENZ";
-	extern char g_pszPerformanceMenu_3dLighting[]			= "3D-BELEUCHTUNG";
-	extern char g_pszPerformanceMenu_Particles[]				= "PARTIKEL";
-	extern char g_pszPerformanceMenu_DynamicVolume[]		= "DYNAMISCHE LAUTSTARKE";
-	extern char g_pszPerformanceMenu_AmbientSounds[]		= "UMGEBENDE KLANGE";
+	char g_pszPerformanceMenu_Title[]					= "LEISTUNG";
+	char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENZ";
+	char g_pszPerformanceMenu_3dLighting[]			= "3D-BELEUCHTUNG";
+	char g_pszPerformanceMenu_Particles[]				= "PARTIKEL";
+	char g_pszPerformanceMenu_DynamicVolume[]		= "DYNAMISCHE LAUTSTARKE";
+	char g_pszPerformanceMenu_AmbientSounds[]		= "UMGEBENDE KLANGE";
 
-	extern char g_pszRotationSetupMenu_Title[]				= "DREHGESCHWINDIGKEITEN";
-	extern char g_pszRotationSetupMenu_RunningSlow[]		= "LAUFT (LANGSAM)";
-	extern char g_pszRotationSetupMenu_RunningFast[]		= "LAUFT (SCHNELL)";
-	extern char g_pszRotationSetupMenu_StandingSlow[]		= "STEHT (LANGSAM)";
-	extern char g_pszRotationSetupMenu_StandingFast[]		= "STEHT (SCHNELL)";
-	extern char g_pszRotationSetupMenu_TapDegrees[]			= "TIPPEN GRADE";
-	extern char g_pszRotationSetupMenu_RestoreDefaults[]	= "ZURUCKSETZEN";
+	char g_pszRotationSetupMenu_Title[]				= "DREHGESCHWINDIGKEITEN";
+	char g_pszRotationSetupMenu_RunningSlow[]		= "LAUFT (LANGSAM)";
+	char g_pszRotationSetupMenu_RunningFast[]		= "LAUFT (SCHNELL)";
+	char g_pszRotationSetupMenu_StandingSlow[]		= "STEHT (LANGSAM)";
+	char g_pszRotationSetupMenu_StandingFast[]		= "STEHT (SCHNELL)";
+	char g_pszRotationSetupMenu_TapDegrees[]			= "TIPPEN GRADE";
+	char g_pszRotationSetupMenu_RestoreDefaults[]	= "ZURUCKSETZEN";
 
-	extern char g_pszVolumesMenu_Title[]						= "AUDIO-MISCHPULT";
+	char g_pszVolumesMenu_Title[]						= "AUDIO-MISCHPULT";
 
-	extern char g_pszStartGameMenu_Title[]						= "SPIEL STARTEN";
-	extern char g_pszStartGameMenu_SinglePlayer[]			= "EINZELSPIELER";
-	extern char g_pszStartGameMenu_Multiplayer[]				= "MEHRERE SPIELER";
-	extern char g_pszStartGameMenu_Demo[]						= "DEMO";
+	char g_pszStartGameMenu_Title[]						= "SPIEL STARTEN";
+	char g_pszStartGameMenu_SinglePlayer[]			= "EINZELSPIELER";
+	char g_pszStartGameMenu_Multiplayer[]				= "MEHRERE SPIELER";
+	char g_pszStartGameMenu_Demo[]						= "DEMO";
 
-	extern char g_pszStartSinglePlayerMenu_Title[]			= "EINZELSPIELER";
-	extern char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NEUE KAMPAGNE"; // FIXME: Google Translated, probably wrong
-	extern char g_pszStartSinglePlayerMenu_New[]				= "ORIGINAL SPIEL";	// Mike's lame translation
-	extern char g_pszStartSinglePlayerMenu_AddOn[]			= "ADD-ON SPIEL"		// Mike's lame translation
+	char g_pszStartSinglePlayerMenu_Title[]			= "EINZELSPIELER";
+	char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NEUE KAMPAGNE"; // FIXME: Google Translated, probably wrong
+	char g_pszStartSinglePlayerMenu_New[]				= "ORIGINAL SPIEL";	// Mike's lame translation
+	char g_pszStartSinglePlayerMenu_AddOn[]			= "ADD-ON SPIEL"		// Mike's lame translation
 #if TARGET == POSTAL_2015
-	extern char g_pszStartSinglePlayerMenu_AddOn2[]			= "SUPER POSTAL";
-	extern char g_pszStartSinglePlayerMenu_AllLevels[]	= "ALLE EBENEN"; // FIXME: Google Translated, possibly wrong
+	char g_pszStartSinglePlayerMenu_AddOn2[]			= "SUPER POSTAL";
+	char g_pszStartSinglePlayerMenu_AllLevels[]	= "ALLE EBENEN"; // FIXME: Google Translated, possibly wrong
 #endif
-	extern char g_pszStartSinglePlayerMenu_LoadLevel[]		= "EBENE LADEN";
-	extern char g_pszStartSinglePlayerMenu_LoadGame[]		= "SPIEL LADEN";
-	extern char g_pszStartSinglePlayerMenu_Challenge[]		= "HERAUSFORDERUNG";
+	char g_pszStartSinglePlayerMenu_LoadLevel[]		= "EBENE LADEN";
+	char g_pszStartSinglePlayerMenu_LoadGame[]		= "SPIEL LADEN";
+	char g_pszStartSinglePlayerMenu_Challenge[]		= "HERAUSFORDERUNG";
 
-	extern char g_pszStartChallengeMenu_Title[]				= "HERAUSFORDERUNG";
-	extern char g_pszStartChallengeMenu_Gauntlet[]			= "SPIESSRUTEN";
-	extern char g_pszStartChallengeMenu_Timed[]				= "ZEIT NEHMEN";
-	extern char g_pszStartChallengeMenu_Goal[]				= "ZIEL";
-	extern char g_pszStartChallengeMenu_Flag[]				= "FLAGGE";
-	extern char g_pszStartChallengeMenu_CheckPoint[]		= "CHECKPOINT";
+	char g_pszStartChallengeMenu_Title[]				= "HERAUSFORDERUNG";
+	char g_pszStartChallengeMenu_Gauntlet[]			= "SPIESSRUTEN";
+	char g_pszStartChallengeMenu_Timed[]				= "ZEIT NEHMEN";
+	char g_pszStartChallengeMenu_Goal[]				= "ZIEL";
+	char g_pszStartChallengeMenu_Flag[]				= "FLAGGE";
+	char g_pszStartChallengeMenu_CheckPoint[]		= "CHECKPOINT";
 
-	extern char g_pszStartMultiplayerMenu_Title[]			= "MEHRERE SPIELER";
-	extern char g_pszStartMultiplayerMenu_Join[]				= "MITSPIELEN";
-	extern char g_pszStartMultiplayerMenu_Host[]				= "HOST-SPIEL";
-	extern char g_pszStartMultiplayerMenu_Options[]			= "OPTIONEN";
+	char g_pszStartMultiplayerMenu_Title[]			= "MEHRERE SPIELER";
+	char g_pszStartMultiplayerMenu_Join[]				= "MITSPIELEN";
+	char g_pszStartMultiplayerMenu_Host[]				= "HOST-SPIEL";
+	char g_pszStartMultiplayerMenu_Options[]			= "OPTIONEN";
 
 
-	extern char g_pszJoinGameMenu_Title[]						= "MITSPIELEN";
-	extern char g_pszJoinGameMenu_Browse[]						= "DURCHSUCHEN";
-	extern char g_pszJoinGameMenu_ConnectTo[]					= "VERBINDEN MIT";
+	char g_pszJoinGameMenu_Title[]						= "MITSPIELEN";
+	char g_pszJoinGameMenu_Browse[]						= "DURCHSUCHEN";
+	char g_pszJoinGameMenu_ConnectTo[]					= "VERBINDEN MIT";
 
-	extern char g_pszHostGameMenu_Title[]						= "HOST-SPIEL";
-	extern char g_pszHostGameMenu_Start[]						= "START";
+	char g_pszHostGameMenu_Title[]						= "HOST-SPIEL";
+	char g_pszHostGameMenu_Start[]						= "START";
 
-	extern char g_pszStartDemoMenu_Title[]						= "DEMO";
-	extern char g_pszStartDemoMenu_Browse[]					= "DURCHSUCHEN";
-	extern char g_pszStartDemoMenu_Play[]						= "ABSPIELEN";
-	extern char g_pszStartDemoMenu_Record[]					= "AUSZEICHNEN";
-	extern char g_pszStartDemoMenu_ConSite[]				= "DIE BAUSTELLE"; // FIXME: Google Translated
-	extern char g_pszStartDemoMenu_Home[]					= "ZUHAUSE"; // FIXME: Google Translated
-	extern char g_pszStartDemoMenu_Bridge[]					= "DIE BRÜCKE";	// FIXME: Google Translated
+	char g_pszStartDemoMenu_Title[]						= "DEMO";
+	char g_pszStartDemoMenu_Browse[]					= "DURCHSUCHEN";
+	char g_pszStartDemoMenu_Play[]						= "ABSPIELEN";
+	char g_pszStartDemoMenu_Record[]					= "AUSZEICHNEN";
+	char g_pszStartDemoMenu_ConSite[]				= "DIE BAUSTELLE"; // FIXME: Google Translated
+	char g_pszStartDemoMenu_Home[]					= "ZUHAUSE"; // FIXME: Google Translated
+	char g_pszStartDemoMenu_Bridge[]					= "DIE BRÜCKE";	// FIXME: Google Translated
 
-	extern char g_pszMultiplayerSetupMenu_Title[]			= "MEHRERE SPIELER";
-	extern char g_pszMultiplayerSetupMenu_Name[]				= "NAME";
-	extern char g_pszMultiplayerSetupMenu_Color[]			= "FARBE";
-	extern char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOKOLL";
-	extern char g_pszMultiplayerSetupMenu_Connection[]		= "VERBINDUNG";
+	char g_pszMultiplayerSetupMenu_Title[]			= "MEHRERE SPIELER";
+	char g_pszMultiplayerSetupMenu_Name[]				= "NAME";
+	char g_pszMultiplayerSetupMenu_Color[]			= "FARBE";
+	char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOKOLL";
+	char g_pszMultiplayerSetupMenu_Connection[]		= "VERBINDUNG";
 
 	// Keep at end -- was not in original localizable text.
-	extern char g_pszControlsMenu_UseJoystick[]				= "JOYSTICK VERWENDEN";
+	char g_pszControlsMenu_UseJoystick[]				= "JOYSTICK VERWENDEN";
 
 #elif LOCALE == FRENCH	///////////////////////////////////////////////////////
 
-	extern char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
-	extern char g_pszMainMenu_Start[]							= "DEMARRER";
-	extern char g_pszMainMenu_Options[]							= "OPTIONS";
-	extern char g_pszMainMenu_Editor[]							= "EDITEUR";
-	extern char g_pszMainMenu_Buy[]								= "ORDER INFO";
-	extern char g_pszMainMenu_Exit[]								= "QUITTER";
+	char	g_pszMainMenu_Title[]							= MAIN_MENU_TITLE;
+	char g_pszMainMenu_Start[]							= "DEMARRER";
+	char g_pszMainMenu_Options[]							= "OPTIONS";
+	char g_pszMainMenu_Editor[]							= "EDITEUR";
+	char g_pszMainMenu_Buy[]								= "ORDER INFO";
+	char g_pszMainMenu_Exit[]								= "QUITTER";
 
-	extern char g_pszVerifyExitMenu_Title[]					= "VRAIMENT SORTIR ?";
-	extern char g_pszVerifyExitMenu_Yes[]						= "OUI";
-	extern char g_pszVerifyExitMenu_No[]						= "NON";
+	char g_pszVerifyExitMenu_Title[]					= "VRAIMENT SORTIR ?";
+	char g_pszVerifyExitMenu_Yes[]						= "OUI";
+	char g_pszVerifyExitMenu_No[]						= "NON";
 
-	extern char g_pszVerifyQuitMenu_Title[]					= "VRAIMENT QUITTER ?";
-	extern char g_pszVerifyQuitMenu_Yes[]						= "OUI";
-	extern char g_pszVerifyQuitMenu_No[]						= "NON";
+	char g_pszVerifyQuitMenu_Title[]					= "VRAIMENT QUITTER ?";
+	char g_pszVerifyQuitMenu_Yes[]						= "OUI";
+	char g_pszVerifyQuitMenu_No[]						= "NON";
 
-	extern char g_pszGameMenu_Title[]							= "JEU";
-	extern char g_pszGameMenu_Continue[]						= "CONTINUER";
-	extern char g_pszGameMenu_Save[]								= "ENREGISTRER";
-	extern char g_pszGameMenu_Options[]							= "OPTIONS";
-	extern char g_pszGameMenu_Quit[]								= "QUITTER";
+	char g_pszGameMenu_Title[]							= "JEU";
+	char g_pszGameMenu_Continue[]						= "CONTINUER";
+	char g_pszGameMenu_Save[]								= "ENREGISTRER";
+	char g_pszGameMenu_Options[]							= "OPTIONS";
+	char g_pszGameMenu_Quit[]								= "QUITTER";
 
-	extern char g_pszEditorMenu_Title[]							= "EDITEUR";
-	extern char g_pszEditorMenu_Continue[]						= "CONTINUER";
-	extern char g_pszEditorMenu_Options[]						= "OPTIONS";
-	extern char g_pszEditorMenu_Quit[]							= "QUITTER";
+	char g_pszEditorMenu_Title[]							= "EDITEUR";
+	char g_pszEditorMenu_Continue[]						= "CONTINUER";
+	char g_pszEditorMenu_Options[]						= "OPTIONS";
+	char g_pszEditorMenu_Quit[]							= "QUITTER";
 
-	extern char g_pszOptionsMenu_Title[]						= "OPTIONS";
-	extern char g_pszOptionsMenu_Video[]						= "VIDEO";
-	extern char g_pszOptionsMenu_Audio[]						= "AUDIO";
-	extern char g_pszOptionsMenu_Controls[]					= "COMMANDES";
-	extern char g_pszOptionsMenu_Multiplayer[]				= "JOUEURS MULTIPLES";
-	extern char g_pszOptionsMenu_Performance[]				= "PERFORMANCE";
-	extern char g_pszOptionsMenu_Difficulty[]					= "DIFFICULTE";
+	char g_pszOptionsMenu_Title[]						= "OPTIONS";
+	char g_pszOptionsMenu_Video[]						= "VIDEO";
+	char g_pszOptionsMenu_Audio[]						= "AUDIO";
+	char g_pszOptionsMenu_Controls[]					= "COMMANDES";
+	char g_pszOptionsMenu_Multiplayer[]				= "JOUEURS MULTIPLES";
+	char g_pszOptionsMenu_Performance[]				= "PERFORMANCE";
+	char g_pszOptionsMenu_Difficulty[]					= "DIFFICULTE";
 #ifdef KID_FRIENDLY_OPTION
-	extern char g_pszOptionsMenu_KidMode[]						= "MODE ENFANT"; // FIXME: Google Translated, again.
+	char g_pszOptionsMenu_KidMode[]						= "MODE ENFANT"; // FIXME: Google Translated, again.
 #endif
-	extern char g_pszDifficultyMenu_Title[]					= "DIFFICULTE";
-	extern char g_pszDifficultyMenu_SetDifficulty[]			= "DEFINIR";
+	char g_pszDifficultyMenu_Title[]					= "DIFFICULTE";
+	char g_pszDifficultyMenu_SetDifficulty[]			= "DEFINIR";
 
-	extern char g_pszOrganMenu_Title[]							= "TEST SONORE";
-	extern char g_pszOrganMenu_SpecialKeysHeading[]			= "TOUCHES SPECIALES";
-	extern char g_pszOrganMenu_NumericKeysFunction[]		= "0 A 9 - JOUER UN SON";
-	extern char g_pszOrganMenu_AlphaKeysFunction[]			= "A A Z - JOUER UN SON";
-	extern char g_pszOrganMenu_TabKeyFunction[]				= "TAB - PROCHAIN JEU DE SONS";
-	extern char g_pszOrganMenu_Exit[]							= "QUITTER";
+	char g_pszOrganMenu_Title[]							= "TEST SONORE";
+	char g_pszOrganMenu_SpecialKeysHeading[]			= "TOUCHES SPECIALES";
+	char g_pszOrganMenu_NumericKeysFunction[]		= "0 A 9 - JOUER UN SON";
+	char g_pszOrganMenu_AlphaKeysFunction[]			= "A A Z - JOUER UN SON";
+	char g_pszOrganMenu_TabKeyFunction[]				= "TAB - PROCHAIN JEU DE SONS";
+	char g_pszOrganMenu_Exit[]							= "QUITTER";
 
-	extern char g_pszAudioMenu_Title[]							= "AUDIO";
-	extern char g_pszAudioMenu_Mixer[]							= "MIXER";
-	extern char g_pszAudioMenu_SoundTest[]						= "TEST SONORE";
-	extern char g_pszAudioMenu_Language[]						= "LA LANGUE"; // Google Translated
-	extern char g_pszAudioMenu_English[]						= "Anglais"; // Google Translated
-	extern char g_pszAudioMenu_Japanese[]						= "Japonais"; // Google Translated
-	extern char g_pszAudioMenu_PainFrequency[]					= "FREQ. DOULER"; // Google Translated & I removed "de la" even though I don't know French grammar
+	char g_pszAudioMenu_Title[]							= "AUDIO";
+	char g_pszAudioMenu_Mixer[]							= "MIXER";
+	char g_pszAudioMenu_SoundTest[]						= "TEST SONORE";
+	char g_pszAudioMenu_Language[]						= "LA LANGUE"; // Google Translated
+	char g_pszAudioMenu_English[]						= "Anglais"; // Google Translated
+	char g_pszAudioMenu_Japanese[]						= "Japonais"; // Google Translated
+	char g_pszAudioMenu_PainFrequency[]					= "FREQ. DOULER"; // Google Translated & I removed "de la" even though I don't know French grammar
 
-	extern char g_pszVideoMenu_Title[]							= "VIDEO";
-	extern char g_pszVideoMenu_Gamma[]							= "GAMMA";
+	char g_pszVideoMenu_Title[]							= "VIDEO";
+	char g_pszVideoMenu_Gamma[]							= "GAMMA";
 
-	extern char g_pszControlsMenu_Title[]						= "COMMANDES";
-	extern char g_pszControlsMenu_KeyboardSetup[]			= "CONFIGURATION CLAVIER";
-	extern char g_pszControlsMenu_MouseSetup[]				= "CONFIGURATION SOURIS";
-	extern char g_pszControlsMenu_JoystickSetup[]			= "CONFIGURATION DE LA MANETTE DE JEU";
-	extern char g_pszControlsMenu_TurningSpeeds[]			= "VITESSES DE ROTATION";
-	extern char g_pszControlsMenu_UseMouse[]					= "UTILISER LA SOURIS";
-	extern char g_pszControlsMenu_UseClassicMouse[] = "Souris classique"; //Google Translated	
-	extern char g_pszControlsMenu_HorizMouseSensitivity[]	= "SOURIS HORIZONTALE";
-	extern char g_pszControlsMenu_VertMouseSensitivity[]	= "SOURIS VERTICALE";
+	char g_pszControlsMenu_Title[]						= "COMMANDES";
+	char g_pszControlsMenu_KeyboardSetup[]			= "CONFIGURATION CLAVIER";
+	char g_pszControlsMenu_MouseSetup[]				= "CONFIGURATION SOURIS";
+	char g_pszControlsMenu_JoystickSetup[]			= "CONFIGURATION DE LA MANETTE DE JEU";
+	char g_pszControlsMenu_TurningSpeeds[]			= "VITESSES DE ROTATION";
+	char g_pszControlsMenu_UseMouse[]					= "UTILISER LA SOURIS";
+	char g_pszControlsMenu_UseClassicMouse[] = "Souris classique"; //Google Translated
+	char g_pszControlsMenu_HorizMouseSensitivity[]	= "SOURIS HORIZONTALE";
+	char g_pszControlsMenu_VertMouseSensitivity[]	= "SOURIS VERTICALE";
 
-	extern char g_pszKeyboardSetupMenu_Title[]				= "CONFIGURATION CLAVIER";
+	char g_pszKeyboardSetupMenu_Title[]				= "CONFIGURATION CLAVIER";
 
-	extern char g_pszMouseSetupMenu_Title[]					= "CONFIGURATION SOURIS";
+	char g_pszMouseSetupMenu_Title[]					= "CONFIGURATION SOURIS";
 
-	extern char g_pszJoystickSetupMenu_Title[]				= "CONFIGURATION DE LA MANETTE DE JEU";
+	char g_pszJoystickSetupMenu_Title[]				= "CONFIGURATION DE LA MANETTE DE JEU";
 
-	extern char g_pszPerformanceMenu_Title[]					= "PERFORMANCE";
-	extern char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENCE";
-	extern char g_pszPerformanceMenu_3dLighting[]			= "ECLAIRAGE 3D";
-	extern char g_pszPerformanceMenu_Particles[]				= "PARTICULES";
-	extern char g_pszPerformanceMenu_DynamicVolume[]		= "VOLUME DYNAMIQUE";
-	extern char g_pszPerformanceMenu_AmbientSounds[]		= "SONS AMBIANTS";
+	char g_pszPerformanceMenu_Title[]					= "PERFORMANCE";
+	char g_pszPerformanceMenu_Transparency[]			= "TRANSPARENCE";
+	char g_pszPerformanceMenu_3dLighting[]			= "ECLAIRAGE 3D";
+	char g_pszPerformanceMenu_Particles[]				= "PARTICULES";
+	char g_pszPerformanceMenu_DynamicVolume[]		= "VOLUME DYNAMIQUE";
+	char g_pszPerformanceMenu_AmbientSounds[]		= "SONS AMBIANTS";
 
-	extern char g_pszRotationSetupMenu_Title[]				= "VITESSES DE ROTATION";
-	extern char g_pszRotationSetupMenu_RunningSlow[]		= "COURIR (LENTEMENT)";
-	extern char g_pszRotationSetupMenu_RunningFast[]		= "COURIR (VITE)";
-	extern char g_pszRotationSetupMenu_StandingSlow[]		= "SE TENIR DEBOUT (LENTEMENT)";
-	extern char g_pszRotationSetupMenu_StandingFast[]		= "SE TENIR DEBOUT (VITE)";
-	extern char g_pszRotationSetupMenu_TapDegrees[]			= "DEGRES DE FRAPPE";
-	extern char g_pszRotationSetupMenu_RestoreDefaults[]	= "DEFAUT";
+	char g_pszRotationSetupMenu_Title[]				= "VITESSES DE ROTATION";
+	char g_pszRotationSetupMenu_RunningSlow[]		= "COURIR (LENTEMENT)";
+	char g_pszRotationSetupMenu_RunningFast[]		= "COURIR (VITE)";
+	char g_pszRotationSetupMenu_StandingSlow[]		= "SE TENIR DEBOUT (LENTEMENT)";
+	char g_pszRotationSetupMenu_StandingFast[]		= "SE TENIR DEBOUT (VITE)";
+	char g_pszRotationSetupMenu_TapDegrees[]			= "DEGRES DE FRAPPE";
+	char g_pszRotationSetupMenu_RestoreDefaults[]	= "DEFAUT";
 
-	extern char g_pszVolumesMenu_Title[]						= "MIXER AUDIO";
+	char g_pszVolumesMenu_Title[]						= "MIXER AUDIO";
 
-	extern char g_pszStartGameMenu_Title[]						= "DEMARRE LE JEU";
-	extern char g_pszStartGameMenu_SinglePlayer[]			= "JOUEUR UNIQUE";
-	extern char g_pszStartGameMenu_Multiplayer[]				= "JOUEURS MULTIPLES";
-	extern char g_pszStartGameMenu_Demo[]						= "DEMO";
+	char g_pszStartGameMenu_Title[]						= "DEMARRE LE JEU";
+	char g_pszStartGameMenu_SinglePlayer[]			= "JOUEUR UNIQUE";
+	char g_pszStartGameMenu_Multiplayer[]				= "JOUEURS MULTIPLES";
+	char g_pszStartGameMenu_Demo[]						= "DEMO";
 
-	extern char g_pszStartSinglePlayerMenu_Title[]			= "JOUEUR UNIQUE";
-	extern char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NOUVELLE CAMPAGNE"; // FIXME: Google Translated, probably wrong
-	extern char g_pszStartSinglePlayerMenu_New[]				= "CHARGER ORIGINAL";	// Mike's lame translation
-	extern char g_pszStartSinglePlayerMenu_AddOn[]			= "CHARGER ADD-ON";		// Mike's lame translation
+	char g_pszStartSinglePlayerMenu_Title[]			= "JOUEUR UNIQUE";
+	char g_pszStartSinglePlayerMenu_NewCampaign[]	= "NOUVELLE CAMPAGNE"; // FIXME: Google Translated, probably wrong
+	char g_pszStartSinglePlayerMenu_New[]				= "CHARGER ORIGINAL";	// Mike's lame translation
+	char g_pszStartSinglePlayerMenu_AddOn[]			= "CHARGER ADD-ON";		// Mike's lame translation
 #if TARGET == POSTAL_2015
-	extern char g_pszStartSinglePlayerMenu_AddOn2[]			= "SUPER POSTAL";
-	extern char g_pszStartSinglePlayerMenu_AllLevels[]	= "TOUS LES NIVEAUX"; // FIXME: Google Translated, probably wrong
+	char g_pszStartSinglePlayerMenu_AddOn2[]			= "SUPER POSTAL";
+	char g_pszStartSinglePlayerMenu_AllLevels[]	= "TOUS LES NIVEAUX"; // FIXME: Google Translated, probably wrong
 #endif
-	extern char g_pszStartSinglePlayerMenu_LoadLevel[]		= "CHARGER LE NIVEAU";
-	extern char g_pszStartSinglePlayerMenu_LoadGame[]		= "CHARGER LE JEU";
-	extern char g_pszStartSinglePlayerMenu_Challenge[]		= "DEFI";
+	char g_pszStartSinglePlayerMenu_LoadLevel[]		= "CHARGER LE NIVEAU";
+	char g_pszStartSinglePlayerMenu_LoadGame[]		= "CHARGER LE JEU";
+	char g_pszStartSinglePlayerMenu_Challenge[]		= "DEFI";
 
-	extern char g_pszStartChallengeMenu_Title[]				= "DEFI";
-	extern char g_pszStartChallengeMenu_Gauntlet[]			= "LE GANT";
-	extern char g_pszStartChallengeMenu_Timed[]				= "CHRONOMETRE";
-	extern char g_pszStartChallengeMenu_Goal[]				= "BUT";
-	extern char g_pszStartChallengeMenu_Flag[]				= "DRAPEAU";
-	extern char g_pszStartChallengeMenu_CheckPoint[]		= "CONTROLE";
+	char g_pszStartChallengeMenu_Title[]				= "DEFI";
+	char g_pszStartChallengeMenu_Gauntlet[]			= "LE GANT";
+	char g_pszStartChallengeMenu_Timed[]				= "CHRONOMETRE";
+	char g_pszStartChallengeMenu_Goal[]				= "BUT";
+	char g_pszStartChallengeMenu_Flag[]				= "DRAPEAU";
+	char g_pszStartChallengeMenu_CheckPoint[]		= "CONTROLE";
 
-	extern char g_pszStartMultiplayerMenu_Title[]			= "JOUEURS MULTIPLES";
-	extern char g_pszStartMultiplayerMenu_Join[]				= "JOINDRE LE JEU";
-	extern char g_pszStartMultiplayerMenu_Host[]				= "ANIMER LE JEU";
-	extern char g_pszStartMultiplayerMenu_Options[]			= "OPTIONS";
+	char g_pszStartMultiplayerMenu_Title[]			= "JOUEURS MULTIPLES";
+	char g_pszStartMultiplayerMenu_Join[]				= "JOINDRE LE JEU";
+	char g_pszStartMultiplayerMenu_Host[]				= "ANIMER LE JEU";
+	char g_pszStartMultiplayerMenu_Options[]			= "OPTIONS";
 
 
-	extern char g_pszJoinGameMenu_Title[]						= "JOINDRE LE JEU";
-	extern char g_pszJoinGameMenu_Browse[]						= "PARCOURIR (RESEAU LOCAL UNIQUEMENT)";
-	extern char g_pszJoinGameMenu_ConnectTo[]					= "SE CONNECTER A";
+	char g_pszJoinGameMenu_Title[]						= "JOINDRE LE JEU";
+	char g_pszJoinGameMenu_Browse[]						= "PARCOURIR (RESEAU LOCAL UNIQUEMENT)";
+	char g_pszJoinGameMenu_ConnectTo[]					= "SE CONNECTER A";
 
-	extern char g_pszHostGameMenu_Title[]						= "ANIMER LE JEU";
-	extern char g_pszHostGameMenu_Start[]						= "DEMARRER";
+	char g_pszHostGameMenu_Title[]						= "ANIMER LE JEU";
+	char g_pszHostGameMenu_Start[]						= "DEMARRER";
 
-	extern char g_pszStartDemoMenu_Title[]						= "DEMO";
-	extern char g_pszStartDemoMenu_Browse[]					= "PARCOURIR";
-	extern char g_pszStartDemoMenu_Play[]						= "JOUER";
-	extern char g_pszStartDemoMenu_Record[]					= "ENREGISTRER";
-	extern char g_pszStartDemoMenu_ConSite[]				= "LE CHANTIER"; // FIXME: Google Translated
-	extern char g_pszStartDemoMenu_Home[]					= "DOMICILE"; // FIXME: Google Translated
-	extern char g_pszStartDemoMenu_Bridge[]					= "LE PONT";	// FIXME: Google Translated	
+	char g_pszStartDemoMenu_Title[]						= "DEMO";
+	char g_pszStartDemoMenu_Browse[]					= "PARCOURIR";
+	char g_pszStartDemoMenu_Play[]						= "JOUER";
+	char g_pszStartDemoMenu_Record[]					= "ENREGISTRER";
+	char g_pszStartDemoMenu_ConSite[]				= "LE CHANTIER"; // FIXME: Google Translated
+	char g_pszStartDemoMenu_Home[]					= "DOMICILE"; // FIXME: Google Translated
+	char g_pszStartDemoMenu_Bridge[]					= "LE PONT";	// FIXME: Google Translated
 
-	extern char g_pszMultiplayerSetupMenu_Title[]			= "JOUEURS MULTIPLES";
-	extern char g_pszMultiplayerSetupMenu_Name[]				= "NOM";
-	extern char g_pszMultiplayerSetupMenu_Color[]			= "COULEUR";
-	extern char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOCOLE";
-	extern char g_pszMultiplayerSetupMenu_Connection[]		= "CONNEXION";
+	char g_pszMultiplayerSetupMenu_Title[]			= "JOUEURS MULTIPLES";
+	char g_pszMultiplayerSetupMenu_Name[]				= "NOM";
+	char g_pszMultiplayerSetupMenu_Color[]			= "COULEUR";
+	char g_pszMultiplayerSetupMenu_Protocol[]		= "PROTOCOLE";
+	char g_pszMultiplayerSetupMenu_Connection[]		= "CONNEXION";
 
 	// Keep at end -- was not in original localizable text.
-	extern char g_pszControlsMenu_UseJoystick[]				= "UTILISER LA MANETTE DE JEU";
+	char g_pszControlsMenu_UseJoystick[]				= "UTILISER LA MANETTE DE JEU";
 
 #endif
 
@@ -978,7 +978,7 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 #if ENGLISH_LOCALE
 
-	extern char* g_apszSoundCategories[]	=
+	char* g_apszSoundCategories[]	=
 		{
 		"GENERAL",		
 		"SOUNDTRACK",			
@@ -994,7 +994,7 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 #elif LOCALE == GERMAN
 
-	extern char* g_apszSoundCategories[]	=
+	char* g_apszSoundCategories[]	=
 		{
 		"ALLGEMEIN",
 		"SOUNDTRACK",
@@ -1010,7 +1010,7 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 #elif LOCALE == FRENCH
 
-	extern char* g_apszSoundCategories[]	=
+	char* g_apszSoundCategories[]	=
 		{
 		"GENERAL",
 		"PISTE MUSICALE",
@@ -1032,7 +1032,7 @@ extern char g_pszPlayOneRealmOnlyMessage[]	=
 
 #if ENGLISH_LOCALE // ScoreDisplayText
 
-extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] = 
+char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 	{
 	"      Population %d                        Hostiles %d   Killed %d (%d%% / %d%%)",	// Standard
 	" Time Remaining %d:%2.2d                                Kills %d",				// Timed
@@ -1053,7 +1053,7 @@ extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 	};
 
 #elif LOCALE == GERMAN
-extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] = 
+char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 	{
 	"      Leute %d                        Feinden %d   Totungen %d (%d%%)",	// Standard
 	" Verbleibende Zeit %d:%2.2d                                Totungen %d",				// Timed
@@ -1074,7 +1074,7 @@ extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 	};
 
 #elif LOCALE == FRENCH
-extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] = 
+char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 	{
 	"      Personnes %d                        Ennemis %d   Victimes %d (%d%%)",	// Standard
 	" Temps restant %d:%2.2d                                Victimes %d",				// Timed
@@ -1096,7 +1096,7 @@ extern char* g_apszScoreDisplayText[CRealm::TotalScoringModes] =
 #endif // ScoreDisplayText
 
 #if ENGLISH_LOCALE // ScoreGoalText
-extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] = 
+char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 	{
 	"      You must kill %d%% of the hostiles.",												// Standard
 	" Score as many kills as possible in the time remaining.",							// Timed
@@ -1118,7 +1118,7 @@ extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 	};
 
 #elif LOCALE == GERMAN
-extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] = 
+char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 	{
 	"      Sie mussen %d%% Feinde toten.",												// Standard
 	" Erzielen Sie in der verbleibenden Zeit su viele Totungen wie moglich.",							// Timed
@@ -1140,7 +1140,7 @@ extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 	};
 
 #elif LOCALE == FRENCH
-extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] = 
+char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 	{
 	"      Vous devez tuer %d%% ennemis.",												// Standard
 	" Faites autant de victimes que possible dans le delai restant.",							// Timed
@@ -1164,7 +1164,7 @@ extern char* g_apszScoreGoalText[CRealm::TotalScoringModes] =
 
 #if ENGLISH_LOCALE // ScoreUnits
 // Units for the various scoring types.
-extern char* g_apszScoreUnits[]	=
+char* g_apszScoreUnits[]	=
 		{
 		"",				// Standard.
 		"Kills",			// Timed.
@@ -1185,7 +1185,7 @@ extern char* g_apszScoreUnits[]	=
 		};
 
 #elif LOCALE == GERMAN
-extern char* g_apszScoreUnits[]	=
+char* g_apszScoreUnits[]	=
 		{
 		"",				// Standard.
 		"Totungen",			// Timed.
@@ -1206,7 +1206,7 @@ extern char* g_apszScoreUnits[]	=
 		};
 
 #elif LOCALE == FRENCH
-extern char* g_apszScoreUnits[]	=
+char* g_apszScoreUnits[]	=
 		{
 		"",				// Standard.
 		"tues",			// Timed.
@@ -1229,7 +1229,7 @@ extern char* g_apszScoreUnits[]	=
 
 #if ENGLISH_LOCALE // ScoreExplanations
 // Explanations for the various scoring types.
-extern char* g_apszScoreExplanations[]	=
+char* g_apszScoreExplanations[]	=
 		{
 		"",												// Standard.
 		"Most kills in %s",							// Timed.
@@ -1250,7 +1250,7 @@ extern char* g_apszScoreExplanations[]	=
 		};
 
 #elif LOCALE == GERMAN
-extern char* g_apszScoreExplanations[]	=
+char* g_apszScoreExplanations[]	=
 		{
 		"",												// Standard.
 		"Die meisten Totungen in %s",							// Timed.
@@ -1271,7 +1271,7 @@ extern char* g_apszScoreExplanations[]	=
 		};
 
 #elif LOCALE == FRENCH
-extern char* g_apszScoreExplanations[]	=
+char* g_apszScoreExplanations[]	=
 		{
 		"",												// Standard.
 		"Maximum de victimes en %s",							// Timed.

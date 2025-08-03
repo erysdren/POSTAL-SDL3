@@ -55,6 +55,7 @@
 #ifdef WIN32
 #include <stdint.h>
 #else
+#include <cstdint>
 #include <cstdlib>
 #endif
 

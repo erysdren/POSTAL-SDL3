@@ -4825,7 +4825,7 @@ static int16_t GetGameDifficulty(void)	// Returns cached game difficulty.
 ////////////////////////////////////////////////////////////////////////////////
 extern char* GetChallengeTitle(int16_t challengeID)
 {
-	char title[256];
+	static char title[256];
 	char fileName[256];
 	Play_GetRealmInfo(false, false, true, 0, challengeID - 1, 0, fileName, 256, title, 256);
 	return title;
