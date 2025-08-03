@@ -448,7 +448,7 @@ class CLogTab
 	// Types, enums, etc.
 	//------------------------------------------------------------------------------
 	public:
-		typedef enum
+		enum
 			{
 			MaxVars = 32,			// Limited only by memory considerations
 			MaxRows = 100,			// Limited only by memory considerations

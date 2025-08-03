@@ -632,7 +632,7 @@ class	CSwirlMe
 				m_lTimeSpin = m_lCycleTimeX = m_lCycleTimeY = m_lCycleTimeA = 0;
 			m_dCenA = m_dRadA = 0.0;
 			m_rClip = RRect(0,0,0,0);
-			m_siSound = NULL;
+			m_siSound = 0;
 			}
 
 		////////////////////////////////////////////////////////////////////////////

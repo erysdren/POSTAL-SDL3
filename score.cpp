@@ -245,7 +245,7 @@ extern bool EnableSteamCloud;
 #define MAX_HIGH_SCORES					16
 
 // defaults to -1 for some reason
-// #define LONG_MAX 0x7FFFFFFFL
+// #define INT32_MAX 0x7FFFFFFFL
 
 //////////////////////////////////////////////////////////////////////////////
 // Variables
@@ -903,7 +903,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 
 	ValType	vtScoringUnit	= Value;
 
-	TRACE("LONG_MAX = %d\n", LONG_MAX);
+	TRACE("INT32_MAX = %d\n", INT32_MAX);
 	// Let's just not do any of this for modes that have no scoring . . .
 	if (pRealm->m_ScoringMode >= CRealm::Timed && pRealm->m_ScoringMode <= CRealm::MPLastManTimedFrag && GetInputMode() != INPUT_MODE_PLAYBACK)
 	{
@@ -933,7 +933,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 				else
 					{
 					// Really bad elapsed time.
-					lPlayerScore	= LONG_MAX;
+					lPlayerScore	= INT32_MAX;
 					}
 
 				vtScoringUnit	= Time;
@@ -949,7 +949,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 				else
 					{
 					// Really bad elapsed time.
-					lPlayerScore	= LONG_MAX;
+					lPlayerScore	= INT32_MAX;
 					}
 
 				vtScoringUnit	= Time;
@@ -1354,7 +1354,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 //				rspSetMouseCursorShowLevel(1);
 
 				// Make sure there's no timeout on while player is adding their name.
-				ms_lScoreMaxTimeOut	= LONG_MAX;
+				ms_lScoreMaxTimeOut	= INT32_MAX;
 
 				// If we want a high score from this player . . .
 				if (sPlayersScorePosition >= 0 && pRealm->m_flags.bMultiplayer == false)
@@ -1389,7 +1389,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 					}
 				else
 					{
-					ms_lScoreMaxTimeOut	= LONG_MAX;
+					ms_lScoreMaxTimeOut	= INT32_MAX;
 					}
 
 				// Set the focus to the listbox's vertical scrollbar so that the arrows will work.

@@ -306,7 +306,7 @@ class CNetInput
 			if ((Net::SEQ)(seq - m_seqOldest) < (Net::SEQ)MaxTotalEntries)
 				return m_aFrameTimes[seq & Mask];
 			else
-				return Invalid;
+				return (U8)Invalid;
 			}
 
 

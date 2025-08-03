@@ -705,8 +705,8 @@ bool CanCycleThroughWeapons()
 	return bResult;
 }
 
-double m_ResModifierX = NULL;
-double m_ResModifierY = NULL;
+double m_ResModifierX = 0;
+double m_ResModifierY = 0;
 
 //Get the Modifier to Cram mouse pos in the resolution the game expects
 void GetResModifer(
@@ -714,20 +714,18 @@ void GetResModifer(
 	double* modiferY)
 	{ 
 		//Do this only for initialisation
-		if (m_ResModifierX == NULL)
+		if (m_ResModifierX == 0)
 		{
 			int screen_width = 640;
 			int screen_height = 480;
 			int16_t render_width = 640;
 			int16_t render_height = 480;
-			SDL_DisplayMode dm_Mode;
 
-			//Returns 0 on success...
-			int i_Result = SDL_GetCurrentDisplayMode(0, &dm_Mode);
+			const SDL_DisplayMode *dm_Mode = SDL_GetCurrentDisplayMode(SDL_GetPrimaryDisplay());
 
-			if (i_Result == 0) {
-				screen_width = dm_Mode.w;
-				screen_height = dm_Mode.h;
+			if (dm_Mode) {
+				screen_width = dm_Mode->w;
+				screen_height = dm_Mode->h;
 			}
 
 			//Get rendered resolution (not alway 640x480)

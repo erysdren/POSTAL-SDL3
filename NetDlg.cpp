@@ -1605,7 +1605,7 @@ static int16_t UpdateListBox(					// Returns 0 on success.
 		while (phostslistDropped->GetHead())
 			{
 			// Get pointer to first host in list
-			U32 u32User = phostslistDropped->GetHeadData().m_u32User;
+			uintptr_t u32User = phostslistDropped->GetHeadData().m_u32User;
 
 			// We should have already been using this.
 			ASSERT(u32User);

@@ -156,8 +156,8 @@ class CInputSettings : CSettings
 			char*	pszDescription;	// Description of key.
 			char*	pszSaveName;		// Name for INI.
 			U8		u8DefaultKey;		// Default rspScanKeys val (RSP_SK_*).
-			int16_t	sDefMouseButtons;	// Default rspGetMouse psButtons mask (MouseButtons).
-			int16_t	sDefJoyButtons;	// Default rspGetJoyState buttons mask (JoyButtons).
+			int32_t	sDefMouseButtons;	// Default rspGetMouse psButtons mask (MouseButtons).
+			int32_t	sDefJoyButtons;	// Default rspGetJoyState buttons mask (JoyButtons).
 			} InputInfo;
 
 

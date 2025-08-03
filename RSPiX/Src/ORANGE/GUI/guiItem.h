@@ -929,7 +929,7 @@ class RGuiItem : public RProps <U32, U32>
 														// the user but is intended to represent 
 														// a user instance structure such as a 
 														// struct or class.
-		uint32_t					m_ulUserData;		// Space that can be used in any way by
+		uintptr_t					m_ulUserData;		// Space that can be used in any way by
 														// the user and has no particular intended
 														// use.
 
@@ -949,7 +949,7 @@ class RGuiItem : public RProps <U32, U32>
 																// when using transparent blit
 																// call.
 
-		int32_t					m_lId;				// ID.  Used to identify this RGuiItem
+		intptr_t					m_lId;				// ID.  Used to identify this RGuiItem
 														// from others.  See GetItemFromId().
 
 		Target				m_targetFocus;		// Target when focus received.
