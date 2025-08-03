@@ -142,7 +142,7 @@
 // This redefines main() to something else, since libSDLmain-osx.a will have
 //  the actual application entry point...that will setup some Cocoa stuff and
 //  then call the redefined main() in this file...
-#include "SDL.h"
+#include <SDL3/SDL.h>
 #endif
 
 #if WITH_STEAMWORKS

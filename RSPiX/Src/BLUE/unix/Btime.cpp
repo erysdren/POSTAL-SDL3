@@ -29,7 +29,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "Blue.h"
-#include "SDL.h"
+#include <SDL3/SDL.h>
 
 static Uint32 MicrosecondsBase = 0;
 

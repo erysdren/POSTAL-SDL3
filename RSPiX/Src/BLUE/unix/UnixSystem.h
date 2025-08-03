@@ -30,7 +30,7 @@
 #ifndef UNIXSYSTEM_H
 #define UNIXSYSTEM_H
 
-#include "SDL.h"
+#include <SDL3/SDL.h>
 
 #include <stdio.h>
 #include <stdlib.h>

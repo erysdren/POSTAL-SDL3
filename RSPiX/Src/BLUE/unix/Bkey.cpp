@@ -30,7 +30,7 @@
 
 #include <map>
 
-#include "SDL.h"
+#include <SDL3/SDL.h>
 #include "BLUE/Blue.h"
 #include "ORANGE/CDT/QUEUE.H"
 
