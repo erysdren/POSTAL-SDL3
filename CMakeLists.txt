@@ -10,6 +10,9 @@ else()
 	find_package(SDL3 CONFIG COMPONENTS SDL3-shared)
 endif()
 
+include_directories(${PROJECT_SOURCE_DIR})
+add_compile_options(-fsigned-char -DPLATFORM_UNIX -Wno-write-strings)
+
 add_library(RSPiX STATIC
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/BLUE/unix/Bdebug.cpp
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/BLUE/unix/Bjoy.cpp
@@ -88,6 +91,7 @@ add_library(RSPiX STATIC
 )
 
 target_include_directories(RSPiX PUBLIC
+	${PROJECT_SOURCE_DIR}/RSPiX/Inc/
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/BLUE/
 )
