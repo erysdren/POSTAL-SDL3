@@ -965,7 +965,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 				else
 					{
 					// Really bad time.
-					lPlayerScore	= LONG_MIN;
+					lPlayerScore	= INT32_MIN;
 					}
 
 				vtScoringUnit	= Time;
@@ -981,7 +981,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 				else
 					{
 					// Really bad time.
-					lPlayerScore	= LONG_MIN;
+					lPlayerScore	= INT32_MIN;
 					}
 
 				vtScoringUnit	= Time;
@@ -1113,7 +1113,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 				else
 					{
 					astrTempNames[sIndex][0]	= '\0';
-					alTempScores[sIndex]			= LONG_MIN + 1;
+					alTempScores[sIndex]			= INT32_MIN + 1;
 					}
 				}
 
@@ -1131,7 +1131,7 @@ void ScoreDisplayHighScores(	// Returns nothing.
 			for (sDstIndex = 0;	sDstIndex < MAX_HIGH_SCORES; sDstIndex++)
 				{
 				sHighestScoreIndex	= -1;
-				lHighestScore			= LONG_MIN;
+				lHighestScore			= INT32_MIN;
 
 				// Find the highest score of the ones not yet copied.
 				for (sSrcIndex = 0; sSrcIndex < MAX_HIGH_SCORES; sSrcIndex++)
