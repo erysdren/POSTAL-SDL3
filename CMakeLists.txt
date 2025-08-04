@@ -3,6 +3,10 @@ project(postal LANGUAGES C CXX)
 
 option(USE_STATIC_SDL "Statically link SDL3" OFF)
 option(BUILD_EXTRAS "Build extras" ON)
+set(GAME_LOCALE US CACHE STRING "Game locale")
+set_property(CACHE GAME_LOCALE PROPERTY STRINGS US UK GERMAN FRENCH JAPAN)
+set(GAME_TARGET POSTAL_2015 CACHE STRING "Game target")
+set_property(CACHE GAME_TARGET PROPERTY STRINGS JAPAN_ADD_ON SUPER_POSTAL POSTAL_PLUS POSTAL_2015)
 
 if(USE_STATIC_SDL)
 	find_package(SDL3 CONFIG COMPONENTS SDL3-static)
@@ -18,7 +22,7 @@ endif()
 
 include_directories(${PROJECT_SOURCE_DIR})
 add_compile_options(-fsigned-char -Wno-write-strings)
-add_compile_definitions(ALLOW_TWINSTICK PLATFORM_UNIX LOCALE=US TARGET=POSTAL_2015)
+add_compile_definitions(ALLOW_TWINSTICK PLATFORM_UNIX LOCALE=${GAME_LOCALE} TARGET=${GAME_TARGET})
 
 add_library(RSPiX STATIC
 	${PROJECT_SOURCE_DIR}/RSPiX/Src/BLUE/unix/Bdebug.cpp
