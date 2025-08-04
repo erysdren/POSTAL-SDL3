@@ -8,10 +8,15 @@ set_property(CACHE GAME_LOCALE PROPERTY STRINGS US UK GERMAN FRENCH JAPAN)
 set(GAME_TARGET POSTAL_2015 CACHE STRING "Game target")
 set_property(CACHE GAME_TARGET PROPERTY STRINGS JAPAN_ADD_ON SUPER_POSTAL POSTAL_PLUS POSTAL_2015)
 
-if(USE_STATIC_SDL)
-	find_package(SDL3 CONFIG COMPONENTS SDL3-static)
+if(PSP)
+	include(FindPkgConfig)
+	pkg_search_module(SDL3 REQUIRED sdl3)
 else()
-	find_package(SDL3 CONFIG COMPONENTS SDL3-shared)
+	if(USE_STATIC_SDL)
+		find_package(SDL3 CONFIG COMPONENTS SDL3-static)
+	else()
+		find_package(SDL3 CONFIG COMPONENTS SDL3-shared)
+	endif()
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
@@ -207,7 +212,23 @@ add_executable(postal1
 	${PROJECT_SOURCE_DIR}/SampleMaster.cpp
 	${PROJECT_SOURCE_DIR}/title.cpp
 )
-target_link_libraries(postal1 PRIVATE WishPiX RSPiX SDL3::SDL3)
+target_link_libraries(postal1 PRIVATE WishPiX RSPiX)
+if(PSP)
+	target_include_directories(postal1 PRIVATE ${SDL3_INCLUDE_DIRS})
+	target_link_libraries(postal1 PRIVATE ${SDL3_LIBRARIES})
+else()
+	target_link_libraries(postal1 PRIVATE WishPiX RSPiX SDL3::SDL3)
+endif()
+
+if(PSP)
+	create_pbp_file(
+		TARGET postal1
+		ICON_PATH NULL
+		BACKGROUND_PATH NULL
+		PREVIEW_PATH NULL
+		TITLE "POSTAL"
+	)
+endif()
 
 if(BUILD_EXTRAS)
 	add_executable(saktool ${PROJECT_SOURCE_DIR}/saktool.c)

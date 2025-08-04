@@ -37,12 +37,20 @@ extern SDL_Window *sdlWindow;
 static char *sdlAppName;
 static SDL_Renderer *sdlRenderer;
 static SDL_Texture *sdlTexture;
+static SDL_Surface *sdlSurface;
+static SDL_Surface *sdlSurfacePaletted;
+static SDL_Palette *sdlPalette;
+#ifdef __PSP__
+static int RequestedWidth = 480;
+static int RequestedHeight = 272;
+static int FramebufferWidth = 847;
+static int FramebufferHeight = 480;
+#else
 static int RequestedWidth = 0;
 static int RequestedHeight = 0;
 static int FramebufferWidth = 0;
 static int FramebufferHeight = 0;
-static Uint32 *TexturePointer = NULL;
-static Uint8 *PalettedTexturePointer = NULL;
+#endif
 
 typedef struct		// Stores information on usable video modes.
 	{
@@ -724,12 +732,15 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
         SDL_RenderPresent(sdlRenderer);
         SDL_RenderClear(sdlRenderer);
         SDL_RenderPresent(sdlRenderer);
-#ifndef MOBILE //Need to remove this for the mouse point to be in the correct place, Android And IOS
-        SDL_SetRenderLogicalPresentation(sdlRenderer, FramebufferWidth, FramebufferHeight, SDL_LOGICAL_PRESENTATION_LETTERBOX);
-		TRACE("SDL Renderer set: %ix%i\n", FramebufferWidth, FramebufferHeight);
-#endif
-        sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, FramebufferWidth, FramebufferHeight);
-        if (!sdlTexture)
+
+		// SDL_SetRenderLogicalPresentation(sdlRenderer, RequestedWidth, RequestedHeight, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+		// TRACE("SDL Renderer set: %ix%i\n", FramebufferWidth, FramebufferHeight);
+
+		sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_GetWindowPixelFormat(sdlWindow), SDL_TEXTUREACCESS_STREAMING, RequestedWidth, RequestedHeight);
+		sdlSurface = SDL_CreateSurfaceFrom(RequestedWidth, RequestedHeight, SDL_GetWindowPixelFormat(sdlWindow), NULL, 0);
+		sdlSurfacePaletted = SDL_CreateSurface(FramebufferWidth, FramebufferHeight, SDL_PIXELFORMAT_INDEX8);
+		sdlPalette = SDL_CreateSurfacePalette(sdlSurfacePaletted);
+		if (!sdlTexture)
         {
             char buf[128];
             SDL_snprintf(buf, sizeof (buf), "Couldn't create texture: %s", SDL_GetError());
@@ -742,12 +753,6 @@ extern int16_t rspSetVideoMode(	// Returns 0 if successfull, non-zero otherwise
             SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "POSTAL", buf, NULL);
             exit(1);
         }
-
-        TexturePointer = new Uint32[FramebufferWidth * FramebufferHeight];
-        PalettedTexturePointer = new Uint8[FramebufferWidth * FramebufferHeight];
-        SDL_memset(TexturePointer, '\0', FramebufferWidth * FramebufferHeight * sizeof (Uint32));
-        SDL_memset(PalettedTexturePointer, '\0', FramebufferWidth * FramebufferHeight * sizeof (Uint8));
-        SDL_UpdateTexture(sdlTexture, NULL, TexturePointer, FramebufferWidth * 4);
 
     	SDL_HideCursor();
         //SDL_SetRelativeMouseMode(mouse_grabbed ? SDL_TRUE : SDL_FALSE);
@@ -807,17 +812,15 @@ extern void rspPresentFrame(void)
 {
     if (!sdlWindow) return;
 
-    // !!! FIXME: I imagine this is not fast. Maybe keep the dirty rect code at least?
-    ASSERT(sizeof (apeApp[0]) == sizeof (Uint32));
-    const Uint8 *src = PalettedTexturePointer;
-    Uint32 *dst = TexturePointer;
-    for (int y = 0; y < FramebufferHeight; y++)
-    {
-        for (int x = 0; x < FramebufferWidth; x++, src++, dst++)
-            *dst = apeApp[*src].argb;
-        }
+	rspUpdatePalette();
 
-    SDL_UpdateTexture(sdlTexture, NULL, TexturePointer, FramebufferWidth * 4);
+	if (SDL_LockTexture(sdlTexture, NULL, &sdlSurface->pixels, &sdlSurface->pitch))
+	{
+		SDL_BlitSurfaceScaled(sdlSurfacePaletted, NULL, sdlSurface, NULL, SDL_SCALEMODE_NEAREST);
+		SDL_UnlockTexture(sdlTexture);
+	}
+
+    SDL_SetRenderDrawColor(sdlRenderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(sdlRenderer);
     SDL_RenderTexture(sdlRenderer, sdlTexture, NULL, NULL);
     SDL_RenderPresent(sdlRenderer);  // off to the screen with you.
@@ -933,8 +936,8 @@ extern int16_t rspLockVideoBuffer(	// Returns 0 if system buffer could be locked
     if (!sdlWindow)
         return -1;
 
-    *ppvBuffer = PalettedTexturePointer;
-    *plPitch = FramebufferWidth;
+    *ppvBuffer = sdlSurfacePaletted->pixels;
+    *plPitch = sdlSurfacePaletted->pitch;
 
     return(0);
 	}
@@ -1098,6 +1101,15 @@ extern void rspGetPaletteEntries(
 ///////////////////////////////////////////////////////////////////////////////
 extern void rspUpdatePalette(void)
 	{
+		if (!sdlPalette)
+			sdlPalette = SDL_CreateSurfacePalette(sdlSurfacePaletted);
+		for (int i = 0; i < sdlPalette->ncolors; i++)
+		{
+			sdlPalette->colors[i].r = apeApp[i].r;
+			sdlPalette->colors[i].g = apeApp[i].g;
+			sdlPalette->colors[i].b = apeApp[i].b;
+			sdlPalette->colors[i].a = apeApp[i].a;
+		}
     }
 ///////////////////////////////////////////////////////////////////////////////
 //

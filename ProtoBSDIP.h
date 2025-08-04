@@ -42,7 +42,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#ifndef __PSP__
 #include <sys/uio.h>
+#endif
 #include <sys/ioctl.h>
 #include <sys/time.h>
 #include <errno.h>
